@@ -15,6 +15,14 @@ Events and comms
  * There is also a Google Group which is mostly defunct now: https://groups.google.com/forum/#!forum/golang-nz
  * Please ask to be added to the github organisation, where you can add and contribute content.
 
+Meetup format
+-------------
+
+ * Mostly we have volunteers giving short talks with slides.
+ * Some time ago, Vend brought in some guest speakers from abroad - such as, Andrew Gerrand (Google) and Brandon Philips (CoreOS).
+ * Originally we would meet up at the pub, and just chat.
+ * In future I would like to add in some challenges and workshop type sessions.
+
 Plans
 -----
 
