@@ -1,4 +1,25 @@
 GoAKL
 =====
+Am Laher
+:Author Initials: AYL
+:toc:
+:meetup-uri: http://www.meetup.com/Go-AKL/
 
-GoAKL is the local Auckland (NZ) user group for the Go programming language.
+GoAKL is the local Auckland (NZ) user group for the Go programming language. We meet every 2 months - see {meetup-uri}[meetup.com]
+
+Events and comms
+----------------
+
+ * We have been coming together since 2013. Please refer to {meetup-uri} to find the next meetup.
+ * We have a channel on [Gophers] Slack. Sign up here: http://invite.slack.golangbridge.org/ , channel #auckland
+ * There is also a Google Group which is mostly defunct now: https://groups.google.com/forum/#!forum/golang-nz
+ * Please ask to be added to the github organisation, where you can add and contribute content.
+
+Plans
+-----
+
+I'm just hoping to share interesting content, whilst growing the community and meeting cool people. I'd like to borrow ideas from other groups around the world.
+
+Cory Lanou of Denver Gophers has some great advice about running meetups: https://github.com/corylanou/go-meetup/blob/master/README.md . I've even been to see them, they're amazing.
+ 
+San Diego Gophers have a github 'org', an approach which I'm copying right now: https://github.com/SDGophers
