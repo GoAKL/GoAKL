@@ -1,0 +1,4 @@
+GoAKL
+=====
+
+GoAKL is the local Auckland (NZ) user group for the Go programming language.
