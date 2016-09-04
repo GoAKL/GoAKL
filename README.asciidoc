@@ -7,6 +7,9 @@ Am Laher
 
 GoAKL is the local Auckland (NZ) user group for the Go programming language. We meet every 2 months - see {meetup-uri}[meetup.com]
 
+.GoAKL logo
+image::GoAKL.png[GoAKL logo]
+
 Events and comms
 ----------------
 
