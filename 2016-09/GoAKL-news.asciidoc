@@ -1,0 +1,17 @@
+Meetup #11 news, September 14th 2016
+====================================
+
+
+Meetup news items:
+
+ * New github org & repo here!
+ * To request anything, please use our channel on [Gophers] Slack. Sign up here: http://invite.slack.golangbridge.org/ , channel #auckland
+ * Suggestions: please create an 'Issue' on the GoAKL repo
+ * We now adhere to the link:https://golang.org/conduct[Go Community Code of Conduct]. Thanks Evan.
+ * Terrible logo: https://github.com/GoAKL/GoAKL/blob/master/GoAKL.png. Challenge - please improve this crappy logo.
+ * Call for volunteers - content. logo. meet/greet. video editing. social media. etc.
+ * Ideas: see link:https://github.com/corylanou/go-meetup/blob/master/README.md[Cory Lanou's writeup]. Denver Gophers is amazing.
+ * Challenges: see link:https://github.com/SDGophers[San Diego's github org].
+gdey recommended 2015-04 and 2015-03 challenges.
+ * Any job openings? ¯\_(ツ)_/¯ 
+ * Next meetup - Mid-November 2016. Date & speakers TBD

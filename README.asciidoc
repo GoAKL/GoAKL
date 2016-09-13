@@ -10,14 +10,21 @@ GoAKL is the local Auckland (NZ) user group for the Go programming language. We 
 .GoAKL logo
 image::GoAKL.png[GoAKL logo]
 
-Events and comms
-----------------
+Comms
+-----
 
  * We have been coming together since 2013. Please refer to {meetup-uri} to find the next meetup.
  * We have a channel on [Gophers] Slack. Sign up here: http://invite.slack.golangbridge.org/ , channel #auckland
  * There is also a Google Group which is mostly defunct now: https://groups.google.com/forum/#!forum/golang-nz
  * Please ask to be added to the github organisation, where you can add and contribute content.
  * We adhere to the link:https://golang.org/conduct[Go Community Code of Conduct].
+
+
+Latest events
+-------------
+
+ * link:https://github.com/GoAKL/GoAKL/tree/master/2016-09/README.asciidoc[14th September 2016]: Go 1.7, SSA compiler, Flame Graphs
+
 
 Meetup format
 -------------
