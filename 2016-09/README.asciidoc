@@ -12,25 +12,25 @@ http://www.meetup.com/Go-AKL/events/232840231/
 Agenda
 ------
 
- • 6:30 - 7:00 Meet and Greet. Enjoy drinks and pizza. 
+ * 6:30 - 7:00 Meet and Greet. Enjoy drinks and pizza. 
 
- • 7:00 - 7:15 - Announcements. link:https://github.com/laher[Am Laher]
+ * 7:00 - 7:15 - Announcements. link:https://github.com/laher[Am Laher]
 
-    • Thank You!
+ ** Thank You!
 
-    • Where are the bathrooms
+ ** Where are the bathrooms
 
-    • link:GoAKL-news.asciidoc[GoAKL news and plans]
+ ** link:GoAKL-news.asciidoc[GoAKL news and plans]
 
-    • Job Openings / Hiring Announcements (if any) 
+ ** Job Openings / Hiring Announcements (if any) 
 
-    • Announce next meetup
+ ** Announce next meetup
 
- • 7:15 - 7:45 - talk #1, link:https://github.com/edsrzf[Evan Shaw], 'Single Static Assignment'
+ * 7:15 - 7:45 - talk #1, link:https://github.com/edsrzf[Evan Shaw], 'Single Static Assignment'
 
- • 7:50 - 8:20 - talk #2, link:https://github.com/mikespook[Xing Xing], 'Flame Graphs'
+ * 7:50 - 8:20 - talk #2, link:https://github.com/mikespook[Xing Xing], 'Flame Graphs'
 
- • 8:25 - 8:35 - Go News. Go1.7, yay!  link:https://github.com/segfault88[Malcolm Lockyer]
+ * 8:25 - 8:35 - Go News. Go1.7, yay!  link:https://github.com/segfault88[Malcolm Lockyer]
 
- • 8:35 - 8:45 - Thanks, wrap up, engage volunteers. 
+ * 8:35 - 8:45 - Thanks, wrap up, engage volunteers. 
 
