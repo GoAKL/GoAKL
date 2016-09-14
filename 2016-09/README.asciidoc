@@ -7,13 +7,13 @@ meetup.com: http://www.meetup.com/Go-AKL/events/232840231/
 
 Great news: firstly we have 2 great talks prepared for this session - from Evan Shaw and Xing Xing. Thanks guys!
 
-Secondly, we are upping our game and getting more organised. Announcements to follow at the meetup itself. 
+Secondly, we are upping our game and getting more organised. Announcements to follow at the meetup itself.
 
 
 Agenda
 ------
 
- * 6:30 - 7:00 Meet and Greet. Enjoy drinks and pizza. 
+ * 6:30 - 7:00 Meet and Greet. Enjoy drinks and pizza.
 
  * 7:00 - 7:15 - Announcements. link:https://github.com/laher[Am Laher]
 
@@ -23,7 +23,7 @@ Agenda
 
  ** link:GoAKL-news.asciidoc[GoAKL news and plans]
 
- ** Job Openings / Hiring Announcements (if any) 
+ ** Job Openings / Hiring Announcements (if any)
 
  ** Announce next meetup
 
@@ -33,13 +33,13 @@ Agenda
 
  * 8:25 - 8:35 - Go News. Go1.7, yay!  link:https://github.com/segfault88[Malcolm Lockyer]
 
- * 8:35 - 8:45 - Thanks, wrap up, engage volunteers. 
+ * 8:35 - 8:45 - Thanks, wrap up, engage volunteers.
 
 
 Go News
 ------
- * [Real Gopher!](https://www.kickstarter.com/projects/1604791210/go-gopher-toy) Kickstarter project
- * Dave Cheney - SOLID Go Design [Video from Golang UK](https://www.youtube.com/watch?v=zzAdEt3xZ1M)
- * Paul Bellamy - Advanced Patterns with io ReadWriter [Video from Golang UK](https://www.youtube.com/watch?v=kTAsciVuZLQ)
- * [Bidirectional gRPC streaming for Go](http://golang.rakyll.org/grpc-streaming/) - What is GRPC? http://www.grpc.io/
- * [go-spew implements a deep pretty printer for Go data structures to aid in debugging.](https://github.com/davecgh/go-spew)
+ * link:https://www.kickstarter.com/projects/1604791210/go-gopher-toy[Real Gopher!] Kickstarter project
+ * Dave Cheney - SOLID Go Design link:https://www.youtube.com/watch?v=zzAdEt3xZ1M(Video from Golang UK)
+ * Paul Bellamy - Advanced Patterns with io ReadWriter link:https://www.youtube.com/watch?v=kTAsciVuZLQ(Video from Golang UK)
+ * link:http://golang.rakyll.org/grpc-streaming/(Bidirectional gRPC streaming for Go) - What is GRPC? http://www.grpc.io/
+ * Not news, but awesome: link:https://github.com/davecgh/go-spew(go-spew implements a deep pretty printer for Go data structures to aid in debugging.). Instead of just printing pointer addresses with fmt.Printf and "%#" - actually follows structure and prints out nested data.
