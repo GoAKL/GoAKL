@@ -29,7 +29,7 @@ Agenda
 
  * 7:15 - 7:45 - talk #1, link:https://github.com/edsrzf[Evan Shaw], 'Single Static Assignment'
 
- * 7:50 - 8:20 - talk #2, link:https://github.com/mikespook[Xing Xing], 'Flame Graphs'
+ * 7:50 - 8:20 - talk #2, link:https://github.com/mikespook[Xing Xing], 'link:https://github.com/GoAKL/GoAKL/tree/master/2016-09/Flame%20Graph%20for%20Golang[Flame Graphs]'
 
  * 8:25 - 8:35 - Go News. Go1.7, yay!  link:https://github.com/segfault88[Malcolm Lockyer]
 
