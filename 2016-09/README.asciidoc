@@ -17,7 +17,7 @@ Agenda
 
  * 7:00 - 7:15 - Announcements. link:https://github.com/laher[Am Laher]
 
- ** Thank You!
+ ** Thank You! link:hapara.com[Hapara] for hosting, beer & pizza. Speakers, volunteers and gophers
 
  ** Where are the bathrooms
 
