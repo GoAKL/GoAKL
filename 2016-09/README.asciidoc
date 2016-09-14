@@ -41,6 +41,7 @@ Go News
  * link:https://www.kickstarter.com/projects/1604791210/go-gopher-toy[Real Gopher!] Kickstarter project
  * Dave Cheney - SOLID Go Design link:https://www.youtube.com/watch?v=zzAdEt3xZ1M[Video from Golang UK]
  * Paul Bellamy - Advanced Patterns with io ReadWriter link:https://www.youtube.com/watch?v=kTAsciVuZLQ[Video from Golang UK]
+ * link:https://github.com/tmrts/go-patterns[go-patterns] Maybe a little bit heavy but interesting to see Go versions of a bunch of well known Java type patterns.
  * link:http://golang.rakyll.org/grpc-streaming/[Bidirectional gRPC streaming for Go] - What is GRPC? http://www.grpc.io/
  * Not news, but awesome: link:https://github.com/davecgh/go-spew[go-spew implements a deep pretty printer for Go data structures to aid in debugging]. Instead of just printing pointer addresses with fmt.Printf and "%#" - actually follows structure and prints out nested data.
 
