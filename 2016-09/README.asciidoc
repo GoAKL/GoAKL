@@ -35,3 +35,11 @@ Agenda
 
  * 8:35 - 8:45 - Thanks, wrap up, engage volunteers. 
 
+
+Go News
+------
+ * [Real Gopher!](https://www.kickstarter.com/projects/1604791210/go-gopher-toy) Kickstarter project
+ * Dave Cheney - SOLID Go Design [Video from Golang UK](https://www.youtube.com/watch?v=zzAdEt3xZ1M)
+ * Paul Bellamy - Advanced Patterns with io ReadWriter [Video from Golang UK](https://www.youtube.com/watch?v=kTAsciVuZLQ)
+ * [Bidirectional gRPC streaming for Go](http://golang.rakyll.org/grpc-streaming/) - What is GRPC? http://www.grpc.io/
+ * [go-spew implements a deep pretty printer for Go data structures to aid in debugging.](https://github.com/davecgh/go-spew)
