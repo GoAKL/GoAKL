@@ -1,0 +1,145 @@
+Flame Graph for Golang
+A brief introduction to flame graph and using it in Golang
+
+14 Sep 2016
+Tags: flame graph, profiling, stack traces
+
+Xing Xing
+mikespook@gmail.com
+http://mikespook.com/
+@mikespook
+
+* Contents
+
+- Profiling Go Programs
+- Flame Graph
+- Practical Walkthrough
+
+* Profiling Go Programs
+
+[[https://blog.golang.org/profiling-go-programs][The BEST post from Go Blog]]
+
+- Generating Profile & Running *pprof*
+
+	go test -test.cpuprofile cpu.prof -test.bench .
+	go tool pprof gorbac.test cpu.prof
+
+
+- *pprof* Interface
+	(pprof) top10
+	(pprof) top10 -cum
+	(pprof) web
+	(pprof) web dfs
+	(pprof) list
+	(pprof) list dfs
+	(pprof) weblist dfs
+
+* Example "(pprof) web"
+
+.iframe img/gorbac.v2.pprof.svg 600 800
+
+* Example "(pprof) web dfs"
+
+.iframe img/gorbac.v2.dfs.pprof.svg 600 800
+
+* Example "(pprof) weblist dfs"
+
+.iframe src/gorbac.v2.list.pprof.html 600 800
+
+* Flame Graph
+
+A visualization tool of profiling
+
+- Number of samples
+- Sampling
+- Stack Depth
+
+.image img/meetup_flamegraph.svg
+.caption Invented by [[http://www.brendangregg.com/][Brendan D. Gregg]]
+
+* Flame Graph
+
+Different types in Software Profiling
+- CPU
+- Memory
+- Off-CPU
+- Hot/Cold
+- Differential
+
+* Flame Graph
+
+.iframe img/gorbac.v2.flamegraph.svg 600 800
+
+* Practical Walkthrough
+
+Target
+
+- [[https://github.com/mikespook/gorbac][GoRBAC]] - Lightweight Role-based Access Control
+- CPU Profiling
+
+Tools
+
+- [[https://golang.org/][Golang Environment]]
+- [[https://github.com/uber/go-torch][go-torch]] from Uber
+- [[https://github.com/brendangregg/FlameGraph][FlameGraph]] from Brendan Gregg
+
+* Benchmark
+
+	go test -test.cpuprofile cpu.prof -test.bench .
+
+Benchmark of GoRBAC (V2.0.0)
+
+ BenchmarkInherCircle-4      	  300000	      3709 ns/op
+ BenchmarkInherNormal-4      	 1000000	      2197 ns/op
+ BenchmarkRbacGranted-4      	 3000000	       538 ns/op
+ BenchmarkRbacNotGranted-4   	 2000000	       603 ns/op
+
+* Generate Graph
+
+Using *pprof*
+
+	go tool pprof gorbac.test cpu.prof
+	(pprof) web
+
+As well as *go-torch*
+	
+	go-torch gorbac.test cpu.prof
+
+* Analysing Ver 2.0.0
+
+.iframe img/gorbac.v2.flamegraph.svg 600 800
+
+* Code Ver 2.0.0
+
+.code src/v2.go
+
+* Analysing master
+
+.iframe img/gorbac.master.flamegraph.svg 600 800
+
+* Code master
+
+.code src/master.go
+
+* Outcome
+
+- GoRBAC (master)
+
+ BenchmarkInherCircle-4      	 1000000	      1491 ns/op
+ BenchmarkInherNormal-4      	 1000000	      1891 ns/op
+ BenchmarkRbacGranted-4      	10000000	       226 ns/op
+ BenchmarkRbacNotGranted-4   	 5000000	       308 ns/op
+
+* NOT Abandon pprof
+
+.iframe img/gorbac.v2.pprof.svg 600 800
+
+* Useful Material
+
+- Cox, R n.d., [[https://blog.golang.org/profiling-go-programs][Profiling Go Programs]].
+- Gregg, B 2016, [[http://queue.acm.org/detail.cfm?id=2927301][The flame graph]], Communications of the ACM, vol. 59, no. 6, pp. 48–57.
+- Gregg, B n.d., [[http://www.brendangregg.com/flamegraphs.html#Updates][Flame Graphs]].
+- Gregg, B n.d., [[http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html][CPU Flame Graphs]].
+- Hiltner, R 2016, [[https://blog.twitch.tv/gos-march-to-low-latency-gc-a6fa96f06eb7#.yit1viugb][Go’s march to low-latency GC]].
+- Calavera, D 2015, [[https://medium.com/@calavera/docker-flame-graphs-f9523e98d57d#.vej8ude8a][Docker flame graphs]].
+- Cano, O 2016, [[https://medium.com/intel-sdi/measuring-snap-performance-7cde2b315a62#.59q8ta7f1][Measuring Snap performance]].

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)file:///tmp/pprof-733540491/pprof001.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Pprof listing</title>
+<style type="text/css">
+body {
+font-family: sans-serif;
+}
+h1 {
+  font-size: 1.5em;
+  margin-bottom: 4px;
+}
+.legend {
+  font-size: 1.25em;
+}
+.line {
+color: #aaaaaa;
+}
+.nop {
+color: #aaaaaa;
+}
+.unimportant {
+color: #cccccc;
+}
+.disasmloc {
+color: #000000;
+}
+.deadsrc {
+cursor: pointer;
+}
+.deadsrc:hover {
+background-color: #eeeeee;
+}
+.livesrc {
+color: #0000ff;
+cursor: pointer;
+}
+.livesrc:hover {
+background-color: #eeeeee;
+}
+.asm {
+color: #008800;
+display: none;
+}
+</style>
+<script type="text/javascript">
+function pprof_toggle_asm(e) {
+  var target;
+  if (!e) e = window.event;
+  if (e.target) target = e.target;
+  else if (e.srcElement) target = e.srcElement;
+
+  if (target) {
+    var asm = target.nextSibling;
+    if (asm && asm.className == "asm") {
+      asm.style.display = (asm.style.display == "block" ? "" : "block");
+      e.preventDefault();
+      return false;
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="legend">File: gorbac.test<br>
+Type: cpu<br>Total: 7.22s</div><h1>github.com/mikespook/gorbac.dfs</h1>/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go
+<pre onclick="pprof_toggle_asm(event)">  Total:       370ms      4.21s (flat, cum) 58.31%
+<span class="line">     16</span> <span class="nop">           .          . 		} </span>
+<span class="line">     17</span> <span class="nop">           .          . 	} </span>
+<span class="line">     18</span> <span class="nop">           .          . 	return nil </span>
+<span class="line">     19</span> <span class="nop">           .          . } </span>
+<span class="line">     20</span> <span class="nop">           .          .  </span>
+<span class="line">     21</span> <span class="deadsrc">        20ms       20ms func dfs(rbac *RBAC, id string, skipped map[string]struct{}, stack []string) error { </span><span class="asm">                   .          .   46ec10: FS MOVQ FS:0xfffffff8, CX                        <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                20ms       20ms   46ec19: LEAQ -0x78(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                   .          .   46ec1e: CMPQ 0x10(CX), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                   .          .   46ec22: JBE 0x46f151                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                   .          .   46ec28: SUBQ $0xf8, SP                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                   .          .   46ec2f: MOVQ BP, 0xf0(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                   .          .   46ec37: LEAQ 0xf0(SP), BP                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                   .          .   46f151: CALL runtime.morestack_noctxt(SB)                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                   .          .   46f156: ?                                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                   .          .   46f157: MOVL $0xfa, CH                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+                   .          .   46f159: ?                                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:21</span>
+</span>
+<span class="line">     22</span> <span class="deadsrc">        10ms      140ms 	if _, ok := skipped[id]; ok { </span><span class="asm">                   .          .   46ec3f: LEAQ 0xacfda(IP), AX                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec46: MOVQ AX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec4a: MOVQ 0x118(SP), CX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec52: MOVQ CX, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec57: MOVQ 0x108(SP), DX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec5f: MOVQ DX, 0x10(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec64: MOVQ 0x110(SP), BX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec6c: MOVQ BX, 0x18(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .      130ms   46ec71: CALL runtime.mapaccess2_faststr(SB)              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec76: MOVZX 0x28(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec7b: TESTL AL, AL                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ec7d: JNE 0x46f129                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46ed00: MOVQ 0x110(SP), DI                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46eefa: LEAQ 0xacd1f(IP), CX                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46f02a: MOVQ 0x110(SP), SI                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                   .          .   46f032: MOVQ 0x108(SP), DI                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+                10ms       10ms   46f0c7: LEAQ 0xacb52(IP), AX                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:22</span>
+</span>
+<span class="line">     23</span> <span class="deadsrc">           .          . 		return nil </span><span class="asm">                   .          .   46f129: MOVQ $0x0, 0x138(SP)                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:23</span>
+                   .          .   46f135: MOVQ $0x0, 0x140(SP)                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:23</span>
+                   .          .   46f141: MOVQ 0xf0(SP), BP                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:23</span>
+                   .          .   46f149: ADDQ $0xf8, SP                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:23</span>
+                   .          .   46f150: RET                                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:23</span>
+</span>
+<span class="line">     24</span> <span class="nop">           .          . 	} </span>
+<span class="line">     25</span> <span class="deadsrc">        40ms       40ms 	for _, item := range stack { </span><span class="asm">                10ms       10ms   46ec83: XORL AX, AX                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ec85: MOVQ 0x120(SP), CX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ec8d: MOVQ AX, 0x48(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                10ms       10ms   46ec92: MOVQ CX, 0x50(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ec97: MOVQ 0x128(SP), DX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ec9f: CMPQ DX, AX                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                10ms       10ms   46eca2: JGE 0x46eddf                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46eca8: MOVQ 0(CX), BX                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ecab: MOVQ 0x8(CX), SI                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                10ms       10ms   46ecbc: ADDQ $0x10, CX                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ecc0: INCQ AX                                          <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ecc3: JMP 0x46ec8d                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ecee: MOVQ 0x48(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ecf3: MOVQ 0x50(SP), CX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ecf8: MOVQ 0x128(SP), DX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ed08: JMP 0x46ecbc                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46ee54: MOVQ 0x120(SP), BX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46f07e: MOVQ 0x128(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+                   .          .   46f122: XORL AX, AX                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:25</span>
+</span>
+<span class="line">     26</span> <span class="deadsrc">        10ms       20ms 		if item == id { </span><span class="asm">                   .          .   46ecaf: MOVQ 0x110(SP), DI                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .          .   46ecb7: CMPQ DI, SI                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .          .   46ecba: JE 0x46ecc5                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .          .   46ecc5: MOVQ BX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .          .   46ecc9: MOVQ SI, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .          .   46ecce: MOVQ 0x108(SP), BX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .          .   46ecd6: MOVQ BX, 0x10(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .          .   46ecdb: MOVQ DI, 0x18(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .       10ms   46ece0: CALL runtime.eqstring(SB)                        <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .          .   46ece5: MOVZX 0x20(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                10ms       10ms   46ecea: TESTL AL, AL                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+                   .          .   46ecec: JNE 0x46ed0a                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:26</span>
+</span>
+<span class="line">     27</span> <span class="deadsrc">           .      560ms 			return fmt.Errorf("Found circle: %s", stack) </span><span class="asm">                   .          .   46ed0a: MOVQ 0x120(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed12: MOVQ AX, 0x78(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed17: MOVQ 0x128(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed1f: MOVQ AX, 0x80(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed27: MOVQ 0x130(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed2f: MOVQ AX, 0x88(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed37: MOVQ $0x0, 0x58(SP)                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed40: MOVQ $0x0, 0x60(SP)                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed49: LEAQ 0xa0f30(IP), AX                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed50: MOVQ AX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed54: LEAQ 0x78(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed59: MOVQ AX, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed5e: MOVQ $0x0, 0x10(SP)                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .       30ms   46ed67: CALL runtime.convT2E(SB)                         <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed6c: MOVQ 0x20(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed71: MOVQ 0x18(SP), CX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed76: MOVQ CX, 0x58(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed7b: MOVQ AX, 0x60(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed80: LEAQ 0xd1c66(IP), AX                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed87: MOVQ AX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed8b: MOVQ $0x10, 0x8(SP)                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed94: LEAQ 0x58(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed99: MOVQ AX, 0x10(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46ed9e: MOVQ $0x1, 0x18(SP)                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46eda7: MOVQ $0x1, 0x20(SP)                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .      530ms   46edb0: CALL fmt.Errorf(SB)                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46edb5: MOVQ 0x30(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46edba: MOVQ 0x28(SP), CX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46edbf: MOVQ CX, 0x138(SP)                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46edc7: MOVQ AX, 0x140(SP)                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46edcf: MOVQ 0xf0(SP), BP                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46edd7: ADDQ $0xf8, SP                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+                   .          .   46edde: RET                                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:27</span>
+</span>
+<span class="line">     28</span> <span class="nop">           .          . 		} </span>
+<span class="line">     29</span> <span class="nop">           .          . 	} </span>
+<span class="line">     30</span> <span class="deadsrc">        90ms      230ms 	if len(rbac.parents[id]) == 0 { </span><span class="asm">                   .          .   46eddf: LEAQ 0xacd7a(IP), AX                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46ede6: MOVQ AX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46edea: MOVQ 0x100(SP), CX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46edf2: MOVQ 0x28(CX), BX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46edf6: MOVQ BX, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46edfb: MOVQ 0x108(SP), BX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                40ms       40ms   46ee03: MOVQ BX, 0x10(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                20ms       20ms   46ee08: MOVQ 0x110(SP), SI                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46ee10: MOVQ SI, 0x18(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .      140ms   46ee15: CALL runtime.mapaccess1_faststr(SB)              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46ee1a: MOVQ 0x20(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                20ms       20ms   46ee1f: MOVQ 0(AX), AX                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                10ms       10ms   46ee22: TESTQ AX, AX                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46ee25: JE 0x46f122                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46ee2b: MOVQ 0(AX), AX                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46ee2e: TESTQ AX, AX                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46ee31: JE 0x46f08b                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46eea5: LEAQ 0xaccb4(IP), AX                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46f03a: JMP 0x46eea5                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+                   .          .   46f124: JMP 0x46ee2e                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:30</span>
+</span>
+<span class="line">     31</span> <span class="deadsrc">           .       40ms 		stack = make([]string, 0) </span><span class="asm">                   .          .   46f08b: LEAQ 0xa27ce(IP), AX                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:31</span>
+                   .          .   46f092: MOVQ AX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:31</span>
+                   .          .   46f096: MOVQ $0x0, 0x8(SP)                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:31</span>
+                   .          .   46f09f: MOVQ $0x0, 0x10(SP)                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:31</span>
+                   .       40ms   46f0a8: CALL runtime.makeslice(SB)                       <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:31</span>
+</span>
+<span class="line">     32</span> <span class="deadsrc">        10ms      160ms 		skipped[id] = empty </span><span class="asm">                   .          .   46f0ad: MOVQ 0x108(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .          .   46f0b5: MOVQ AX, 0x68(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .          .   46f0ba: MOVQ 0x110(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                10ms       10ms   46f0c2: MOVQ AX, 0x70(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .          .   46f0ce: MOVQ AX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .          .   46f0d2: MOVQ 0x118(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .          .   46f0da: MOVQ AX, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .          .   46f0df: LEAQ 0x68(SP), CX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .          .   46f0e4: MOVQ CX, 0x10(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .          .   46f0e9: LEAQ 0x188310(IP), CX                            <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .          .   46f0f0: MOVQ CX, 0x18(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+                   .      150ms   46f0f5: CALL runtime.mapassign1(SB)                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:32</span>
+</span>
+<span class="line">     33</span> <span class="deadsrc">           .          . 		return nil </span><span class="asm">                   .          .   46f0fa: MOVQ $0x0, 0x138(SP)                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:33</span>
+                   .          .   46f106: MOVQ $0x0, 0x140(SP)                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:33</span>
+                   .          .   46f112: MOVQ 0xf0(SP), BP                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:33</span>
+                   .          .   46f11a: ADDQ $0xf8, SP                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:33</span>
+                   .          .   46f121: RET                                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:33</span>
+</span>
+<span class="line">     34</span> <span class="nop">           .          . 	} </span>
+<span class="line">     35</span> <span class="deadsrc">       110ms      750ms 	stack = append(stack, id) </span><span class="asm">                   .          .   46ee37: MOVQ 0x128(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                10ms       10ms   46ee3f: LEAQ 0x1(AX), CX                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee43: MOVQ 0x130(SP), DX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee4b: CMPQ DX, CX                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee4e: JG 0x46f03f                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee5c: MOVQ BX, 0x120(SP)                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+               100ms      100ms   46ee64: MOVQ CX, 0x128(SP)                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee6c: MOVQ DX, 0x130(SP)                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee74: SHLQ $0x4, AX                                    <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee78: MOVQ 0x110(SP), SI                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee80: MOVQ SI, 0x8(BX)(AX*1)                           <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee85: LEAQ 0(BX)(AX*1), DI                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee89: MOVL 0x188790(IP), R8                            <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee90: TESTL R8, R8                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee93: JNE 0x46effc                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46ee99: MOVQ 0x108(SP), DI                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46eea1: MOVQ DI, 0(BX)(AX*1)                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46effc: MOVQ DI, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f000: MOVQ 0x108(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f008: MOVQ AX, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f00d: CALL runtime.writebarrierptr(SB)                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f012: MOVQ 0x128(SP), CX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f01a: MOVQ 0x130(SP), DX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f022: MOVQ 0x120(SP), BX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f03f: LEAQ 0xa281a(IP), BX                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f046: MOVQ BX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f04a: MOVQ 0x120(SP), BX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f052: MOVQ BX, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f057: MOVQ AX, 0x10(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f05c: MOVQ DX, 0x18(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f061: MOVQ CX, 0x20(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .      640ms   46f066: CALL runtime.growslice(SB)                       <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f06b: MOVQ 0x28(SP), BX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f070: MOVQ 0x30(SP), SI                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f075: MOVQ 0x38(SP), DX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f07a: LEAQ 0x1(SI), CX                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+                   .          .   46f086: JMP 0x46ee5c                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:35</span>
+</span>
+<span class="line">     36</span> <span class="deadsrc">        70ms      710ms 	for pid := range rbac.parents[id] { </span><span class="asm">                   .          .   46eeac: MOVQ AX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                10ms       10ms   46eeb0: MOVQ 0x100(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46eeb8: MOVQ 0x28(AX), R8                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                10ms       10ms   46eebc: MOVQ R8, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                10ms       10ms   46eec1: MOVQ DI, 0x10(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                10ms       10ms   46eec6: MOVQ SI, 0x18(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .      100ms   46eecb: CALL runtime.mapaccess1_faststr(SB)              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46eed0: MOVQ 0x20(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46eed5: MOVQ 0(AX), AX                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46eed8: LEAQ 0x90(SP), DI                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46eee0: XORPS X0, X0                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46eee3: ADDQ $-0x20, DI                                  <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46eee7: MOVQ BP, -0x10(SP)                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46eeec: LEAQ -0x10(SP), BP                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .       20ms   46eef1: CALL 0x4581e1                                    <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46eef6: MOVQ 0(BP), BP                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef01: MOVQ CX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef05: MOVQ AX, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef0a: LEAQ 0x90(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef12: MOVQ AX, 0x10(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .      310ms   46ef17: CALL runtime.mapiterinit(SB)                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef1c: MOVQ 0x90(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef24: TESTQ AX, AX                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef27: JE 0x46efb4                                      <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef2d: MOVQ 0(AX), CX                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                20ms       20ms   46ef30: MOVQ 0x8(AX), AX                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef92: LEAQ 0x90(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46ef9a: MOVQ AX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                10ms      220ms   46ef9e: CALL runtime.mapiternext(SB)                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46efa3: MOVQ 0x90(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46efab: TESTQ AX, AX                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+                   .          .   46efae: JNE 0x46ef2d                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:36</span>
+</span>
+<span class="line">     37</span> <span class="deadsrc">        10ms      1.54s 		if err := dfs(rbac, pid, skipped, stack); err != nil { </span><span class="asm">                   .          .   46ef34: MOVQ 0x100(SP), DX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef3c: MOVQ DX, 0(SP)                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef40: MOVQ CX, 0x8(SP)                                 <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef45: MOVQ AX, 0x10(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef4a: MOVQ 0x118(SP), AX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef52: MOVQ AX, 0x18(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef57: MOVQ 0x120(SP), CX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef5f: MOVQ CX, 0x20(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef64: MOVQ 0x128(SP), BX                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef6c: MOVQ BX, 0x28(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef71: MOVQ 0x130(SP), SI                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef79: MOVQ SI, 0x30(SP)                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .      1.53s   46ef7e: CALL github.com/mikespook/gorbac.dfs(SB)         <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                10ms       10ms   46ef83: MOVQ 0x40(SP), AX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef88: MOVQ 0x38(SP), CX                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef8d: TESTQ CX, CX                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+                   .          .   46ef90: JNE 0x46efdc                                     <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:37</span>
+</span>
+<span class="line">     38</span> <span class="deadsrc">           .          . 			return err </span><span class="asm">                   .          .   46efdc: MOVQ CX, 0x138(SP)                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:38</span>
+                   .          .   46efe4: MOVQ AX, 0x140(SP)                               <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:38</span>
+                   .          .   46efec: MOVQ 0xf0(SP), BP                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:38</span>
+                   .          .   46eff4: ADDQ $0xf8, SP                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:38</span>
+                   .          .   46effb: RET                                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:38</span>
+</span>
+<span class="line">     39</span> <span class="nop">           .          . 		} </span>
+<span class="line">     40</span> <span class="nop">           .          . 	} </span>
+<span class="line">     41</span> <span class="deadsrc">           .          . 	return nil </span><span class="asm">                   .          .   46efb4: MOVQ $0x0, 0x138(SP)                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:41</span>
+                   .          .   46efc0: MOVQ $0x0, 0x140(SP)                             <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:41</span>
+                   .          .   46efcc: MOVQ 0xf0(SP), BP                                <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:41</span>
+                   .          .   46efd4: ADDQ $0xf8, SP                                   <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:41</span>
+                   .          .   46efdb: RET                                              <span class="disasmloc">/home/mikespook/golang/own/src/github.com/mikespook/gorbac/helper.go:41</span>
+</span>
+<span class="line">     42</span> <span class="nop">           .          . } </span>
+<span class="line">     43</span> <span class="nop">           .          .  </span>
+<span class="line">     44</span> <span class="nop">           .          . // AnyGranted checks if any role has the permission. </span>
+<span class="line">     45</span> <span class="nop">           .          . func AnyGranted(rbac *RBAC, roles []string, permission Permission, </span>
+<span class="line">     46</span> <span class="nop">           .          . 	assert AssertionFunc) bool { </span>
+</pre>
+
+
+
+
+</body></html>
