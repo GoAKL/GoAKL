@@ -1,0 +1,508 @@
+#+TITLE: Simplicity in Go
+#+AUTHOR: Am Laher
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: reveal_slide_number:c/t
+#+OPTIONS: toc:1
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: solarized
+#+REVEAL_HLEVEL: 2
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Simplicity in Go.">
+#+REVEAL_POSTAMBLE: <p> Created by am. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+#+REVEAL_EXTRA_CSS: ./local.css
+#+STARTUP: showall
+
+# Local Variables:
+# mode: org
+# eval: (add-hook 'after-save-hook 'org-reveal-export-to-html t t)
+# End:
+* Simplicity
+   #+BEGIN_QUOTE
+   You know you've achieved perfection in design, 
+   Not when you have nothing more to add, 
+   But when you have nothing more to take away. -- Antoine de Saint Exupery.
+   #+END_QUOTE
+
+# I think we mostly all feel a certain positivity when describing a solution as simple.
+# I'd like to explore how Go satisfies this ideal, and how it doesn't
+# I don't pretend that it's achieved perfection in design, but I do think there's a simplicity and minimalisim in a way I haven't seen in other languages.
+# I'd also like to think that with it's simplicity, Go has saved me from myself.
+
+*** Simple design
+     [[https://talks.golang.org/2015/simplicity-is-complicated/gopherslide2smblue.jpg]]
+
+** We all like simplicity
+    Many technologies are sold on simplicity. Simplicity is simple.
+*** Simple is good. The end
+    https://media1.tenor.com/images/4014ee90f48cadc67c08d01e2f3e143d/tenor.gif
+*** But ...
+   #+BEGIN_QUOTE
+   Simplicity is complicated -- Rob Pike
+   #+END_QUOTE
+   #+BEGIN_QUOTE
+   Simplicity is the art of hiding complexity. -- Rob Pike
+   #+END_QUOTE
+
+* Background
+*** Define Simplicity
+   - Easy to understand
+   - plain, basic, unadorned
+   - composed of a single element; not compound.  
+*** Etymology 
+   - The noun sense (mid 16th century) originally referred to a medicine made from one constituent, especially from one plant.
+*** Alt.:
+   - simple: "one braid"
+   - complex: "many braids"
+   - easy: "nearby"
+
+** Simple vs easy
+    - Easy != Simple. 2 similar concepts with an interesting relationship
+    - Simple is often easy, but not always ...
+*** But ...
+    - eg.1. Making something easier to configure might introduce more complexity in implementation
+*** But ...
+    - eg.2. making something easier for a future release, might make it more complex for an alternate future
+
+** Simple is important
+  Why? What does it give us?
+*** Why is simplicity important?
+    #+BEGIN_QUOTE
+      Simplicity is prerequisite for reliability. -- Edsger Dijkstra
+    #+END_QUOTE
+*** Why don't we like complexity? 
+      https://assets.teenvogue.com/photos/59f3c6cd45b8e93711afefda/master/w_757,c_limit/02.gif 
+*** Meta
+    - I think it's a useful way to describe a language or solution
+    - In practice, it's not a one-dimensional measure. "What's simple about ..." characterises a language/solution
+    - Useful, if a little subjective
+ 
+** Other languages
+  Many languages sell themselves in terms of simplicity
+*** Python 
+    #+BEGIN_QUOTE
+     "There should be one — and preferably only one — obvious way to do it." (Zen of Python)
+    #+END_QUOTE
+*** Clojure
+    #+BEGIN_QUOTE
+     - "Simplicity is hard work. But in the long haul the person with a simpler system is gonna wipe the plate with you. Because they can change things when you are struggling to push elephants around"  (Rich Hickey)
+    #+END_QUOTE
+    #+BEGIN_QUOTE
+     - "Information is Simple. Don't ruin it"
+    #+END_QUOTE
+*** Ruby     
+     - Ruby is simple in appearance, but is very complex inside, just like our human body. (Yukihiro Matsumoto)
+     - "principle of least surprise."
+*** Java
+     - "Simplicity is one of Java's overriding design goals."
+     - "Simplicity and removal of many "features" of dubious worth from its C and C++ ancestors keep Java relatively small and reduce the programmer's burden in producing reliable applications" 
+     - http://www.oracle.com/technetwork/java/simple-142339.html
+
+** Simplicity in Go
+     Go was borne of frustration with the direction of C++ (and many other languages). 
+     Languages keep adding features, becoming more and more like one another. With that comes complexity.
+
+*** Simplicity is complicated
+     [[https://github.com/golang/talks/blob/master/2015/simplicity-is-complicated.slide][A talk]] by Rob Pike (2015)
+     - Go does not try to be like the other languages.
+     - Go does not compete on features.
+     - As of Go 1, the language is fixed. Only very minor changes in past 5 years since 1.0
+     - Simplicity has many facets.
+     - "Go is not simple, but feels simple"
+ 
+     
+* How is Go simple?
+** Small spec. 
+    It's [[https://golang.org/ref/spec][a really short document]]
+*** whereas ...
+     - [[https://docs.oracle.com/javase/specs/jls/se8/html/index.html][Contents page for another language spec]]
+     - Apologies for singling out Java. It's just something I'm familiar with
+** In and out
+  Go implements a small feature-set. Which ones did they keep?
+*** In
+    As a modern language, the basics are done well
+    - garbage collection
+    - package system
+    - first class functions
+    - immutable strings, generally encoded in UTF-8
+    - concurrency primitives
+    - 
+*** Out
+    - Implicit numeric conversions
+    - constructors and destructors
+    - operator overloading
+    - default parameter values
+    - inheritance
+    - generics
+    - exceptions
+    - macros
+    - function annotations
+    - thread-local storage
+
+** Control structures
+    - Just one type of loop 
+      - For loops for iteration. See [[https://golang.org/doc/effective_go.html#for][Effective Go]]
+      - No while/do-while
+      - No functional sauce (flatMap etc)
+    - switches:
+      - no fallthrough (by default)
+      - with flexible 'case' statements
+    - No exceptions
+      - errors are values
+      - multiple return values
+    - concurrency primitives
+      - go
+      - <-
+** Types
+    Go is strongly typed, with type inference. 
+    - Types indicate intent. Make it easy to write tooling, easy to refactor. Fewer asssertions needed
+    - Type inference (declarations)
+    - Interfaces automatically satisfied
+    - Only package-private or public
+    - I think the type system is a strong illustration of Go's 'sparseness'
+*** Very few collection types
+     - slices
+     - maps
+     - No sets, no immutables, no OrderedDoublyLinkedHashSet
+*** No traditional inheritance
+     - Composition
+     - Interfaces
+     - Subtypes & Aliases
+     - Embedding
+*** No generics
+     - Simpler for the language creators!
+     - Can feel a bit copy-paste. Repetition == complexity?
+     - Choose another idiom?
+** Concurrency
+    - Go doesn't make concurrency easy (nothing does afaik), but it does offer some simple constructs
+    - Prefer message passing over shared state
+    - channels/goroutines preferred over synchronisation
+    - Locking is still provided via sync.Mutex. In some cases it's a better fit, but it's not the first tool to choose
+** Deployment
+    - Compiled standalone executable.
+    - Smallish binaries -> small containers.
+    - Bye-bye runtime dependency soup "jar/dll hell"
+    - Small images, quick builds
+    - Quick deploys -> easy microservices.
+** Batteries-included standard library. 'Just enough'
+**** Just enough
+    - http, json, ssl, crypto, template, sync/atomic, 
+    - testing, httptest
+    - See also [[https://golang.org/pkg/#subrepo][subrepos]]
+*** Slightly limited
+    - log, sql, sort, flag, http-routing, cookies
+    - people often use a 3rd party package for these
+** Simple tooling
+   - go run
+   - go test (coverage etc)
+   - gofmt
+   - go get
+   - godoc
+   - race detector
+   - cpu profiler, tracer, memstats
+*** Compiler efficiency
+     - e.g. packages imported as compiled objects (not source)
+     - package dependencies can't be circular
+     - cross-compilation is easy
+     - tip: speed up compilation with go test -i / go install (will be automatic soon)
+** Simple code in the stdlib
+   - check the code. I find it readable.
+   - examples to follow ...
+** Packages
+*** Package dependencies allow one direction only
+     - Characterises packages e.g. ioutil -> io -> os
+*** https://github.com/davecheney/graphpkg
+*** Go packages tend to have plenty of files in a single package.
+     - privacy is only implemented at package level
+     - './internal' packages offer an additional level of structure for private types/functions
+*** Vendoring
+    - Repeatable, stable builds. 
+    - Eliminates build-time fragility
+    - Tooling is now maturing (at last)
+    - Can still be annoying to manage
+
+* Some basic illustrations    
+   - Some code samples from Go
+   - Sorry no gifs
+** Error handling
+    - An example from Go's standard lib: [[https://golang.org/src/net/http/client.go?s=16518:16570#L480][http.Client.Do()]]
+    - I love the simplicity of Go's error handling.
+    - Not everyone does! See internets
+
+** Concurrency
+    - Don't communicate by sharing memory, share memory by communicating.
+    - i.e. Where possible use channels rather than mutexes
+    - manage statefulness on a single goroutine
+    - Guaranteed delivery. Blocking. (no callbacks)
+
+#+BEGIN_SRC go :imports '("fmt" "time") :results value raw
+func say(s string) {
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(s)
+	}
+}
+
+func main() {
+	go say("world")
+	say("hello")
+}
+#+END_SRC
+
+#+RESULTS:
+| hello |
+| world |
+| hello |
+| world |
+| world |
+| hello |
+| world |
+| hello |
+| hello |
+
+*** Using channels
+     https://tour.golang.org/concurrency/2
+     https://golang.org/doc/effective_go.html#channels
+
+** Marshaling
+ - I think Go makes serialization easy, by keeping it simple.
+ - Compact - struct tags indicate how to serialize the type
+ - This approach used for json, xml, some 3rd party database packages ...
+
+#+BEGIN_SRC go :imports '("encoding/json" "fmt" "os") :results value raw
+  type ColorGroup struct {
+		ID     int `json:"-"`
+		Name   string `json:"nom"`
+		Colors []string `json:"colours"`
+	}
+	group := ColorGroup{
+		ID:     1,
+		Name:   "Reds",
+		Colors: []string{"Crimson", "Red", "Ruby", "Maroon"},
+	}
+	b, err := json.Marshal(group)
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	os.Stdout.Write(b)
+#+END_SRC
+
+#+RESULTS:
+{"ID":1,"Name":"Reds","colours":["Crimson","Red","Ruby","Maroon"]}
+
+*** Unmarshaling
+     https://golang.org/pkg/encoding/json/#Unmarshal
+     - An handy characteristic - you can set defaults into your struct before loading the json
+
+** Table Driven Tests
+  - Shortened from a test in the flag package
+  - See https://golang.org/src/fmt/fmt_test.go#L134
+#+BEGIN_SRC go :imports '("fmt") :results value raw
+var flagtests = []struct {
+	in  string
+	out string
+}{
+	{"%s", "[%a]"},
+	{"%0s", "[%-a]"},
+	{"%v", "[%+a]"},
+}
+
+func main() {
+   fmt.Println("** Results")
+   TestFlagParser()
+}
+
+func TestFlagParser() {
+	for _, tt := range flagtests {
+		s := fmt.Sprintf(tt.in, "b")
+		if s != tt.out {
+			fmt.Printf("Sprintf(%q, &b) => %q, want %q", tt.in, s, tt.out)
+		} else {
+		  fmt.Printf("Sprintf(%q, &b) => %q, yay", tt.in, s)
+    }
+	}
+}
+#+END_SRC
+
+#+RESULTS:
+** Results
+Sprintf("%s", &b) => "b", want "[%a]"Sprintf("%0s", &b) => "b", want "[%-a]"Sprintf("%v", &b) => "b", want "[%+a]"
+
+* Creating simple code
+
+** Simple design
+   Extreme Programming (c 1999) offers 4 rules.
+   #+BEGIN_QUOTE
+    - Passes the tests
+    - Reveals intention
+    - No duplication
+    - Fewest elements (types, functions, ...)
+    
+    -- Kent Beck
+   #+END_QUOTE
+
+   Somehow seems surprising?
+   - 'Passes tests' makes the list because tests describe intent. Compactness
+   - No duplication ... after spending some years with Go, I only partly agree
+ 
+*** YAGNI
+     "You ain't gonna need it"
+     "Always implement things when you actually need them, never when you just foresee that you need them."
+*** KISS
+    "Keep it simple, stupid" -- US Navy, 1960
+    https://upload.wikimedia.org/wikipedia/commons/a/a9/Rube_Goldberg%27s_%22Self-Operating_Napkin%22_%28cropped%29.gif
+
+** Factors affecting complexity
+    To the internets ...
+*** Compactness
+     - Compactness is the property that a design can fit inside a human being's head
+     - "Does an experienced user need a manual?"
+*** Orthogonality
+     - "the pieces are independent from each other"
+     - Avoids side effects
+*** Layers of abstraction
+     - Abstractions are good. Many abstractions can be bad
+     - indirection
+     - Leakiness
+     - affects readability
+*** Dependencies
+     - Minimise
+*** Duplication
+     - Complexity is a cost; don't pay it twice.
+     - Duplicate work can be altered independently - it can become difficult to grok the differences
+     - Conversely, removal of duplicate could introduce more complexity (see abstraction/indirection)
+*** Essential complexity
+     - After a number of years, requirements can become complex, software too.
+     - How can you manage complexity?
+     - Alt. 'where did they put the complexity?'
+*** Expressiveness
+     People describe functional programming as expressive. 
+     I include this topic because it's something Go doesn't include. Something they sacrificed for simplicity
+*** Metrics
+     - Cyclomatic complexity
+     - Number of Features
+     - Scale
+     - Inputs/outputs
+     - file/data access
+
+** Constructs
+   That Rich Hickey again:
+   - Complex constructs: State, Object, Methods, Syntax, Inheritance, Switch/matching, Vars, Imperative loops, Actors, ORM, Conditionals.
+   - Simple constructs: Values, Functions, Namespaces, Data, Polymorphism, Managed refs, Set functions, Queues, Declarative data manipulation, Rules, Consistency.
+
+* Making our Go Simple
+** Go Proverbs
+     [[https://go-proverbs.github.io/][Another talk]] by Rob Pike
+     - "Clear is better than clever"
+     - Don't communicate by sharing memory, share memory by communicating.
+     - The bigger the interface, the weaker the abstraction.
+     - Make the zero value useful.
+     - A little copying is better than a little dependency. See [[https://golang.org/pkg/strconv/#IsPrint][strconv.IsPrint()]] 
+     - Gofmt's style is no one's favorite, yet gofmt is everyone's favorite.
+** General tips
+     - defer: https://gobyexample.com/defer
+     - favour functions over methods. "Data is simple"
+     - collections: https://gobyexample.com/collection-functions
+       - or subtyping the slice and putting methods on it?
+       - or just use a for loop. YAGNI
+     - Multiple return values
+     - Empty struct
+       - https://dave.cheney.net/2014/03/25/the-empty-struct
+       - https://godoc.org/github.com/bradfitz/iter
+     - Anonymous structs
+       - More private than private
+       - Templates
+       - Table driven tests
+
+** Concurrency
+*** Channels have curious properties. Fewer is better
+    https://1.bp.blogspot.com/-1SxzJGvpoBs/WPtUW3P6eJI/AAAAAAAAE60/STc3bHVaP-gHUdEpTdFvJc3AKuTiq4swQCLcB/s1600/KITTEN%2BGIF%2B%E2%80%A2%2BHow%2Bhard%2Bis%2Bto%2Btake%2Ba%2Bpicture%2Bof%2B10%2Bkittens%2Btogether%2BIt%2Bis%2Bimpurrsible%2Bmission.gif
+*** The curious channel
+     - Channels block
+       - sending before setting up a receiver: blocks forever
+       - receiving before setting up a sender: blocks forever
+     - sending on a closed channel panics
+     - sending on a nil channel blocks forever
+     - receiving from a closed channel returns immediately. `_, ok := <-ch`
+     - A receive from a nil channel blocks forever ... https://dave.cheney.net/2014/03/19/channel-axioms
+     - buffered channels introduce 2 modes of behaviour. Can be harder to test
+*** So ...
+     - Close on the sender side when done
+     - https://gobyexample.com/closing-channels
+     - Reading: range where possible
+     - https://gobyexample.com/range-over-channels
+     - Don't go crazy with channel synchronisations
+     - https://gobyexample.com/channel-synchronization
+*** Long-running vs short-running
+     - Given a task that you need to run often
+     - Where possible, pass the value with some contextual info rather than firing up a separate channel for each task
+
+*** Helpers
+     - Waitgroups: https://golang.org/pkg/sync/#example_WaitGroup
+     - context: https://golang.org/pkg/context/#example_WithCancel
+     - The 'Done' trick: https://golang.org/src/context/context.go?s=325:333#L325
+*** Mutexes
+    - uh, shared state
+    - BUT sometimes simpler than channels
+    - https://gobyexample.com/mutexes
+    - https://gobyexample.com/stateful-goroutines
+** @movio
+     - Embrace the standard library.
+     - Minimise abstraction/indirection. 
+     - Prioritise service-level tests ('medium-size')
+       - Use interfaces and mocks sparingly
+       - httptest is great
+     - Favour package-private over public, local over package-global
+       - At Movio, almost all our code is in main packages
+       - Use `if err := someFunc(); err != nil {`
+     - Favour composition over embedding/subtyping/interfaces
+     - A little consideration before adding a 3rd party library
+     - A little copy-paste before writing a shared library
+     - Group variable declarations together with `var(...)`
+     - FSMs for long-running tasks
+     - close(channel) for broadcasting messages
+     - http+json for synchronous comms
+     - Prometheus for alerting
+*** Microservices
+     - Microservices help to keep code compact
+     - Kubernetes: cheap and easy to add services
+     - Split up services when one becomes complex
+     - Merge services when interactions become complex
+     - Fail hard when something goes badly wrong. Fatal when manual intervention is needed
+     - BUT ... some complexity is moved to kubernetes & service interactions
+*** MISTY
+    "Make it simpler, thank you"
+    - Reviews ask common questions: "simplify", "remove ambiguity", "remove feature", "remove abstraction", "remove dependency", "delete code"
+
+
+* What's not simple?
+  - Time parsing/formatting https://gobyexample.com/time-formatting-parsing
+  - vendoring (yet)
+  - GOPATH (so far)
+  - Deleting from a slice
+  - maps as sets
+  - Sorted maps
+
+* Discussion
+
+> Wat u fink abt Go?
+
+* Sources
+** Go
+    - https://talks.golang.org/2015/simplicity-is-complicated.slide#1
+    - https://dave.cheney.net/2015/03/08/simplicity-and-collaboration
+    - https://dave.cheney.net/2017/06/18/simplicity-debt-redux
+    - https://commandcenter.blogspot.co.nz/2012/06/less-is-exponentially-more.html
+    - https://www.sitepoint.com/simple-clutter-free-programming-with-go/
+    - https://talks.golang.org/2012/splash.article
+    - https://go-proverbs.github.io/
+
+** Non-Go
+    - Rich Hickey: https://www.infoq.com/presentations/Simple-Made-Easy
+    - Ward Cunningham: http://www.artima.com/intv/simplest2.html
+    - Muntzing: https://en.wikipedia.org/wiki/Muntzing
+    - The art of programming http://www.catb.org/~esr/writings/taoup/html/index.html

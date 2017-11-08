@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Simplicity in Go</title>
+<meta name="author" content="(Am Laher)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///home/am/d/reveal.js-3.5.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="file:///home/am/d/reveal.js-3.5.0/css/theme/solarized.css" id="theme"/>
+
+<link rel="stylesheet" href="./local.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///home/am/d/reveal.js-3.5.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<meta name="description" content="Simplicity in Go.">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Simplicity in Go</h1><h2 class="author">Am Laher</h2><p class="date">Created: 2017-11-08 Wed 13:13</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org860f61d">Simplicity</a></li>
+<li><a href="#/slide-org2854507">Background</a></li>
+<li><a href="#/slide-org83e44c4">How is Go simple?</a></li>
+<li><a href="#/slide-org0b567c3">Some basic illustrations</a></li>
+<li><a href="#/slide-org9ef2e6f">Creating simple code</a></li>
+<li><a href="#/slide-org720a943">Making our Go Simple</a></li>
+<li><a href="#/slide-orgc5bd276">What's not simple?</a></li>
+<li><a href="#/slide-orgf6171c2">Discussion</a></li>
+<li><a href="#/slide-org2cf37a0">Sources</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-org860f61d">
+<h2 id="org860f61d">Simplicity</h2>
+<blockquote nil>
+<p>
+You know you've achieved perfection in design, 
+Not when you have nothing more to add, 
+But when you have nothing more to take away. &#x2013; Antoine de Saint Exupery.
+</p>
+</blockquote>
+
+</section>
+<section id="slide-org25555ff">
+<h4 id="org25555ff">Simple design</h4>
+
+<div class="figure">
+<p><img src="https://talks.golang.org/2015/simplicity-is-complicated/gopherslide2smblue.jpg" alt="gopherslide2smblue.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org67dbd5e">
+<h3 id="org67dbd5e">We all like simplicity</h3>
+<p>
+Many technologies are sold on simplicity. Simplicity is simple.
+</p>
+</section>
+<section id="slide-org3ec96bb">
+<h4 id="org3ec96bb">Simple is good. The end</h4>
+
+<div class="figure">
+<p><img src="https://media1.tenor.com/images/4014ee90f48cadc67c08d01e2f3e143d/tenor.gif" alt="tenor.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org76b4015">
+<h4 id="org76b4015">But &#x2026;</h4>
+<blockquote nil>
+<p>
+Simplicity is complicated &#x2013; Rob Pike
+</p>
+</blockquote>
+<blockquote nil>
+<p>
+Simplicity is the art of hiding complexity. &#x2013; Rob Pike
+</p>
+</blockquote>
+
+</section>
+</section>
+<section>
+<section id="slide-org2854507">
+<h2 id="org2854507">Background</h2>
+<div class="outline-text-2" id="text-org2854507">
+</div>
+</section>
+<section id="slide-orga465460">
+<h4 id="orga465460">Define Simplicity</h4>
+<ul>
+<li>Easy to understand</li>
+<li>plain, basic, unadorned</li>
+<li>composed of a single element; not compound.</li>
+
+</ul>
+</section>
+<section id="slide-orgd949967">
+<h4 id="orgd949967">Etymology</h4>
+<ul>
+<li>The noun sense (mid 16th century) originally referred to a medicine made from one constituent, especially from one plant.</li>
+
+</ul>
+</section>
+<section id="slide-org4751f75">
+<h4 id="org4751f75">Alt.:</h4>
+<ul>
+<li>simple: "one braid"</li>
+<li>complex: "many braids"</li>
+<li>easy: "nearby"</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org48acd9a">
+<h3 id="org48acd9a">Simple vs easy</h3>
+<ul>
+<li>Easy != Simple. 2 similar concepts with an interesting relationship</li>
+<li>Simple is often easy, but not always &#x2026;</li>
+
+</ul>
+</section>
+<section id="slide-orgc8ab17c">
+<h4 id="orgc8ab17c">But &#x2026;</h4>
+<ul>
+<li>eg.1. Making something easier to configure might introduce more complexity in implementation</li>
+
+</ul>
+</section>
+<section id="slide-orgc089a50">
+<h4 id="orgc089a50">But &#x2026;</h4>
+<ul>
+<li>eg.2. making something easier for a future release, might make it more complex for an alternate future</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdbde94a">
+<h3 id="orgdbde94a">Simple is important</h3>
+<p>
+Why? What does it give us?
+</p>
+</section>
+<section id="slide-orgd3b10cb">
+<h4 id="orgd3b10cb">Why is simplicity important?</h4>
+<blockquote nil>
+<p>
+Simplicity is prerequisite for reliability. &#x2013; Edsger Dijkstra
+</p>
+</blockquote>
+</section>
+<section id="slide-org09650f7">
+<h4 id="org09650f7">Why don't we like complexity?</h4>
+
+<div class="figure">
+<p><img src="https://assets.teenvogue.com/photos/59f3c6cd45b8e93711afefda/master/w_757,c_limit/02.gif" alt="02.gif" /> 
+</p>
+</div>
+</section>
+<section id="slide-org676ba49">
+<h4 id="org676ba49">Meta</h4>
+<ul>
+<li>I think it's a useful way to describe a language or solution</li>
+<li>In practice, it's not a one-dimensional measure. "What's simple about &#x2026;" characterises a language/solution</li>
+<li>Useful, if a little subjective</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga2d7058">
+<h3 id="orga2d7058">Other languages</h3>
+<p>
+Many languages sell themselves in terms of simplicity
+</p>
+</section>
+<section id="slide-orgb893ade">
+<h4 id="orgb893ade">Python</h4>
+<blockquote nil>
+<p>
+"There should be one — and preferably only one — obvious way to do it." (Zen of Python)
+</p>
+</blockquote>
+</section>
+<section id="slide-org4b82d68">
+<h4 id="org4b82d68">Clojure</h4>
+<blockquote nil>
+<ul>
+<li>"Simplicity is hard work. But in the long haul the person with a simpler system is gonna wipe the plate with you. Because they can change things when you are struggling to push elephants around"  (Rich Hickey)</li>
+
+</ul>
+</blockquote>
+<blockquote nil>
+<ul>
+<li>"Information is Simple. Don't ruin it"</li>
+
+</ul>
+</blockquote>
+</section>
+<section id="slide-orgda64374">
+<h4 id="orgda64374">Ruby</h4>
+<ul>
+<li>Ruby is simple in appearance, but is very complex inside, just like our human body. (Yukihiro Matsumoto)</li>
+<li>"principle of least surprise."</li>
+
+</ul>
+</section>
+<section id="slide-orgeb30772">
+<h4 id="orgeb30772">Java</h4>
+<ul>
+<li>"Simplicity is one of Java's overriding design goals."</li>
+<li>"Simplicity and removal of many "features" of dubious worth from its C and C++ ancestors keep Java relatively small and reduce the programmer's burden in producing reliable applications"</li>
+<li><a href="http://www.oracle.com/technetwork/java/simple-142339.html">http://www.oracle.com/technetwork/java/simple-142339.html</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orge1045e1">
+<h3 id="orge1045e1">Simplicity in Go</h3>
+<p>
+Go was borne of frustration with the direction of C++ (and many other languages). 
+Languages keep adding features, becoming more and more like one another. With that comes complexity.
+</p>
+
+</section>
+<section id="slide-org5cb4fb7">
+<h4 id="org5cb4fb7">Simplicity is complicated</h4>
+<p>
+<a href="https://github.com/golang/talks/blob/master/2015/simplicity-is-complicated.slide">A talk</a> by Rob Pike (2015)
+</p>
+<ul>
+<li>Go does not try to be like the other languages.</li>
+<li>Go does not compete on features.</li>
+<li>As of Go 1, the language is fixed. Only very minor changes in past 5 years since 1.0</li>
+<li>Simplicity has many facets.</li>
+<li>"Go is not simple, but feels simple"</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org83e44c4">
+<h2 id="org83e44c4">How is Go simple?</h2>
+<div class="outline-text-2" id="text-org83e44c4">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org6b24205">
+<h3 id="org6b24205">Small spec.</h3>
+<p>
+It's <a href="https://golang.org/ref/spec">a really short document</a>
+</p>
+</section>
+<section id="slide-orgf98a70b">
+<h4 id="orgf98a70b">whereas &#x2026;</h4>
+<ul>
+<li><a href="https://docs.oracle.com/javase/specs/jls/se8/html/index.html">Contents page for another language spec</a></li>
+<li>Apologies for singling out Java. It's just something I'm familiar with</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org3d038ed">
+<h3 id="org3d038ed">In and out</h3>
+<p>
+Go implements a small feature-set. Which ones did they keep?
+</p>
+</section>
+<section id="slide-org40c706d">
+<h4 id="org40c706d">In</h4>
+<p>
+As a modern language, the basics are done well
+</p>
+<ul>
+<li>garbage collection</li>
+<li>package system</li>
+<li>first class functions</li>
+<li>immutable strings, generally encoded in UTF-8</li>
+<li>concurrency primitives</li>
+<li></li>
+
+</ul>
+</section>
+<section id="slide-org10f4d1a">
+<h4 id="org10f4d1a">Out</h4>
+<ul>
+<li>Implicit numeric conversions</li>
+<li>constructors and destructors</li>
+<li>operator overloading</li>
+<li>default parameter values</li>
+<li>inheritance</li>
+<li>generics</li>
+<li>exceptions</li>
+<li>macros</li>
+<li>function annotations</li>
+<li>thread-local storage</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaf42052">
+<h3 id="orgaf42052">Control structures</h3>
+<ul>
+<li>Just one type of loop 
+<ul>
+<li>For loops for iteration. See <a href="https://golang.org/doc/effective_go.html#for">Effective Go</a></li>
+<li>No while/do-while</li>
+<li>No functional sauce (flatMap etc)</li>
+
+</ul></li>
+<li>switches:
+<ul>
+<li>no fallthrough (by default)</li>
+<li>with flexible 'case' statements</li>
+
+</ul></li>
+<li>No exceptions
+<ul>
+<li>errors are values</li>
+<li>multiple return values</li>
+
+</ul></li>
+<li>concurrency primitives
+<ul>
+<li>go</li>
+<li>&lt;-</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgceebe3e">
+<h3 id="orgceebe3e">Types</h3>
+<p>
+Go is strongly typed, with type inference. 
+</p>
+<ul>
+<li>Types indicate intent. Make it easy to write tooling, easy to refactor. Fewer asssertions needed</li>
+<li>Type inference (declarations)</li>
+<li>Interfaces automatically satisfied</li>
+<li>Only package-private or public</li>
+<li>I think the type system is a strong illustration of Go's 'sparseness'</li>
+
+</ul>
+</section>
+<section id="slide-org4accb30">
+<h4 id="org4accb30">Very few collection types</h4>
+<ul>
+<li>slices</li>
+<li>maps</li>
+<li>No sets, no immutables, no OrderedDoublyLinkedHashSet</li>
+
+</ul>
+</section>
+<section id="slide-org20d4057">
+<h4 id="org20d4057">No traditional inheritance</h4>
+<ul>
+<li>Composition</li>
+<li>Interfaces</li>
+<li>Subtypes &amp; Aliases</li>
+<li>Embedding</li>
+
+</ul>
+</section>
+<section id="slide-org2126432">
+<h4 id="org2126432">No generics</h4>
+<ul>
+<li>Simpler for the language creators!</li>
+<li>Can feel a bit copy-paste. Repetition == complexity?</li>
+<li>Choose another idiom?</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgead7a96">
+<h3 id="orgead7a96">Concurrency</h3>
+<ul>
+<li>Go doesn't make concurrency easy (nothing does afaik), but it does offer some simple constructs</li>
+<li>Prefer message passing over shared state</li>
+<li>channels/goroutines preferred over synchronisation</li>
+<li>Locking is still provided via sync.Mutex. In some cases it's a better fit, but it's not the first tool to choose</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org3e3a233">
+<h3 id="org3e3a233">Deployment</h3>
+<ul>
+<li>Compiled standalone executable.</li>
+<li>Smallish binaries -&gt; small containers.</li>
+<li>Bye-bye runtime dependency soup "jar/dll hell"</li>
+<li>Small images, quick builds</li>
+<li>Quick deploys -&gt; easy microservices.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org5e27763">
+<h3 id="org5e27763">Batteries-included standard library. 'Just enough'</h3>
+<div class="outline-text-3" id="text-org5e27763">
+</div>
+<ul class="org-ul">
+<li><a id="org8b3263a"></a>Just enough<br />
+<ul>
+<li>http, json, ssl, crypto, template, sync/atomic,</li>
+<li>testing, httptest</li>
+<li>See also <a href="https://golang.org/pkg/#subrepo">subrepos</a></li>
+
+</ul>
+</li>
+</section>
+<section id="slide-orgc00ef03">
+<h4 id="orgc00ef03">Slightly limited</h4>
+<ul>
+<li>log, sql, sort, flag, http-routing, cookies</li>
+<li>people often use a 3rd party package for these</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org5944adb">
+<h3 id="org5944adb">Simple tooling</h3>
+<ul>
+<li>go run</li>
+<li>go test (coverage etc)</li>
+<li>gofmt</li>
+<li>go get</li>
+<li>godoc</li>
+<li>race detector</li>
+<li>cpu profiler, tracer, memstats</li>
+
+</ul>
+</section>
+<section id="slide-org8c27ddc">
+<h4 id="org8c27ddc">Compiler efficiency</h4>
+<ul>
+<li>e.g. packages imported as compiled objects (not source)</li>
+<li>package dependencies can't be circular</li>
+<li>cross-compilation is easy</li>
+<li>tip: speed up compilation with go test -i / go install (will be automatic soon)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgbe8bde2">
+<h3 id="orgbe8bde2">Simple code in the stdlib</h3>
+<ul>
+<li>check the code. I find it readable.</li>
+<li>examples to follow &#x2026;</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org35ba125">
+<h3 id="org35ba125">Packages</h3>
+<div class="outline-text-3" id="text-org35ba125">
+</div>
+</section>
+<section id="slide-org8d88f66">
+<h4 id="org8d88f66">Package dependencies allow one direction only</h4>
+<ul>
+<li>Characterises packages e.g. ioutil -&gt; io -&gt; os</li>
+
+</ul>
+</section>
+<section id="slide-orgbae1b55">
+<h4 id="orgbae1b55"><a href="https://github.com/davecheney/graphpkg">https://github.com/davecheney/graphpkg</a></h4>
+</section>
+<section id="slide-orgcd041e1">
+<h4 id="orgcd041e1">Go packages tend to have plenty of files in a single package.</h4>
+<ul>
+<li>privacy is only implemented at package level</li>
+<li>'./internal' packages offer an additional level of structure for private types/functions</li>
+
+</ul>
+</section>
+<section id="slide-org15504f0">
+<h4 id="org15504f0">Vendoring</h4>
+<ul>
+<li>Repeatable, stable builds.</li>
+<li>Eliminates build-time fragility</li>
+<li>Tooling is now maturing (at last)</li>
+<li>Can still be annoying to manage</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0b567c3">
+<h2 id="org0b567c3">Some basic illustrations</h2>
+<ul>
+<li>Some code samples from Go</li>
+<li>Sorry no gifs</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org87dfb47">
+<h3 id="org87dfb47">Error handling</h3>
+<ul>
+<li>An example from Go's standard lib: <a href="https://golang.org/src/net/http/client.go?s=16518:16570#L480">http.Client.Do()</a></li>
+<li>I love the simplicity of Go's error handling.</li>
+<li>Not everyone does! See internets</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbaa1c4a">
+<h3 id="orgbaa1c4a">Concurrency</h3>
+<ul>
+<li>Don't communicate by sharing memory, share memory by communicating.</li>
+<li>i.e. Where possible use channels rather than mutexes</li>
+<li>manage statefulness on a single goroutine</li>
+<li>Guaranteed delivery. Blocking. (no callbacks)</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-go"><span style="color: #3a81c3; font-weight: bold;">func</span> <span style="color: #6c3163; font-weight: bold;">say</span><span style="color: #3a81c3;">(</span>s <span style="color: #ba2f59; font-weight: bold;">string</span><span style="color: #3a81c3;">)</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">for</span> i := <span style="color: #4e3163;">0</span>; i &lt; <span style="color: #4e3163;">5</span>; i++ <span style="color: #6c3163;">{</span>
+    time.<span style="color: #6c3163; font-weight: bold;">Sleep</span><span style="color: #2d9574;">(</span><span style="color: #4e3163;">100</span> * time.Millisecond<span style="color: #2d9574;">)</span>
+    fmt.<span style="color: #6c3163; font-weight: bold;">Println</span><span style="color: #2d9574;">(</span>s<span style="color: #2d9574;">)</span>
+  <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #3a81c3; font-weight: bold;">func</span> <span style="color: #6c3163; font-weight: bold;">main</span><span style="color: #3a81c3;">()</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">go</span> <span style="color: #6c3163; font-weight: bold;">say</span><span style="color: #6c3163;">(</span><span style="color: #2d9574;">"world"</span><span style="color: #6c3163;">)</span>
+  <span style="color: #6c3163; font-weight: bold;">say</span><span style="color: #6c3163;">(</span><span style="color: #2d9574;">"hello"</span><span style="color: #6c3163;">)</span>
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgc0c9a35">
+<h4 id="orgc0c9a35">Using channels</h4>
+<p>
+<a href="https://tour.golang.org/concurrency/2">https://tour.golang.org/concurrency/2</a>
+<a href="https://golang.org/doc/effective_go.html#channels">https://golang.org/doc/effective_go.html#channels</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc88af15">
+<h3 id="orgc88af15">Marshaling</h3>
+<ul>
+<li>I think Go makes serialization easy, by keeping it simple.</li>
+<li>Compact - struct tags indicate how to serialize the type</li>
+<li>This approach used for json, xml, some 3rd party database packages &#x2026;</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-go"><span style="color: #3a81c3; font-weight: bold;">type</span> <span style="color: #ba2f59; font-weight: bold;">ColorGroup</span> <span style="color: #3a81c3; font-weight: bold;">struct</span> <span style="color: #3a81c3;">{</span>
+  ID     int <span style="color: #2d9574;">`json:"-"`</span>
+  Name   string <span style="color: #2d9574;">`json:"nom"`</span>
+  Colors <span style="color: #6c3163;">[]</span><span style="color: #ba2f59; font-weight: bold;">string</span> <span style="color: #2d9574;">`json:"colours"`</span>
+<span style="color: #3a81c3;">}</span>
+group := <span style="color: #ba2f59; font-weight: bold;">ColorGroup</span><span style="color: #3a81c3;">{</span>
+  <span style="color: #4e3163;">ID</span>:     <span style="color: #4e3163;">1</span>,
+  <span style="color: #4e3163;">Name</span>:   <span style="color: #2d9574;">"Reds"</span>,
+  <span style="color: #4e3163;">Colors</span>: <span style="color: #6c3163;">[]</span><span style="color: #ba2f59; font-weight: bold;">string</span><span style="color: #6c3163;">{</span><span style="color: #2d9574;">"Crimson"</span>, <span style="color: #2d9574;">"Red"</span>, <span style="color: #2d9574;">"Ruby"</span>, <span style="color: #2d9574;">"Maroon"</span><span style="color: #6c3163;">}</span>,
+<span style="color: #3a81c3;">}</span>
+b, err := json.<span style="color: #6c3163; font-weight: bold;">Marshal</span><span style="color: #3a81c3;">(</span>group<span style="color: #3a81c3;">)</span>
+<span style="color: #3a81c3; font-weight: bold;">if</span> err != <span style="color: #4e3163;">nil</span> <span style="color: #3a81c3;">{</span>
+  fmt.<span style="color: #6c3163; font-weight: bold;">Println</span><span style="color: #6c3163;">(</span><span style="color: #2d9574;">"error:"</span>, err<span style="color: #6c3163;">)</span>
+<span style="color: #3a81c3;">}</span>
+os.Stdout.<span style="color: #6c3163; font-weight: bold;">Write</span><span style="color: #3a81c3;">(</span>b<span style="color: #3a81c3;">)</span>
+</pre>
+</div>
+<p>
+{"ID":1,"Name":"Reds","colours":["Crimson","Red","Ruby","Maroon"]}
+</p>
+
+</section>
+<section id="slide-org9007460">
+<h4 id="org9007460">Unmarshaling</h4>
+<p>
+<a href="https://golang.org/pkg/encoding/json/#Unmarshal">https://golang.org/pkg/encoding/json/#Unmarshal</a>
+</p>
+<ul>
+<li>An handy characteristic - you can set defaults into your struct before loading the json</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfac1434">
+<h3 id="orgfac1434">Table Driven Tests</h3>
+<ul>
+<li>Shortened from a test in the flag package</li>
+<li>See <a href="https://golang.org/src/fmt/fmt_test.go#L134">https://golang.org/src/fmt/fmt_test.go#L134</a></li>
+
+</ul>
+<div class="org-src-container">
+
+<pre  class="src src-go"><span style="color: #3a81c3; font-weight: bold;">var</span> flagtests = <span style="color: #3a81c3;">[]</span><span style="color: #3a81c3; font-weight: bold;">struct</span> <span style="color: #3a81c3;">{</span>
+  in  string
+  out string
+<span style="color: #3a81c3;">}{</span>
+  <span style="color: #6c3163;">{</span><span style="color: #2d9574;">"%s"</span>, <span style="color: #2d9574;">"[%a]"</span><span style="color: #6c3163;">}</span>,
+  <span style="color: #6c3163;">{</span><span style="color: #2d9574;">"%0s"</span>, <span style="color: #2d9574;">"[%-a]"</span><span style="color: #6c3163;">}</span>,
+  <span style="color: #6c3163;">{</span><span style="color: #2d9574;">"%v"</span>, <span style="color: #2d9574;">"[%+a]"</span><span style="color: #6c3163;">}</span>,
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #3a81c3; font-weight: bold;">func</span> <span style="color: #6c3163; font-weight: bold;">main</span><span style="color: #3a81c3;">()</span> <span style="color: #3a81c3;">{</span>
+   fmt.<span style="color: #6c3163; font-weight: bold;">Println</span><span style="color: #6c3163;">(</span><span style="color: #2d9574;">"** Results"</span><span style="color: #6c3163;">)</span>
+   <span style="color: #6c3163; font-weight: bold;">TestFlagParser</span><span style="color: #6c3163;">()</span>
+<span style="color: #3a81c3;">}</span>
+
+<span style="color: #3a81c3; font-weight: bold;">func</span> <span style="color: #6c3163; font-weight: bold;">TestFlagParser</span><span style="color: #3a81c3;">()</span> <span style="color: #3a81c3;">{</span>
+  <span style="color: #3a81c3; font-weight: bold;">for</span> _, tt := <span style="color: #3a81c3; font-weight: bold;">range</span> flagtests <span style="color: #6c3163;">{</span>
+    s := fmt.<span style="color: #6c3163; font-weight: bold;">Sprintf</span><span style="color: #2d9574;">(</span>tt.in, <span style="color: #2d9574;">"b"</span><span style="color: #2d9574;">)</span>
+    <span style="color: #3a81c3; font-weight: bold;">if</span> s != tt.out <span style="color: #2d9574;">{</span>
+      fmt.<span style="color: #6c3163; font-weight: bold;">Printf</span><span style="color: #67b11d;">(</span><span style="color: #2d9574;">"Sprintf(%q, &amp;b) =&gt; %q, want %q"</span>, tt.in, s, tt.out<span style="color: #67b11d;">)</span>
+    <span style="color: #2d9574;">}</span> <span style="color: #3a81c3; font-weight: bold;">else</span> <span style="color: #2d9574;">{</span>
+      fmt.<span style="color: #6c3163; font-weight: bold;">Printf</span><span style="color: #67b11d;">(</span><span style="color: #2d9574;">"Sprintf(%q, &amp;b) =&gt; %q, yay"</span>, tt.in, s<span style="color: #67b11d;">)</span>
+    <span style="color: #2d9574;">}</span>
+  <span style="color: #6c3163;">}</span>
+<span style="color: #3a81c3;">}</span>
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org3822f25">
+<h3 id="org3822f25">Results</h3>
+<p>
+Sprintf("%s", &amp;b) =&gt; "b", want "[%a]"Sprintf("%0s", &amp;b) =&gt; "b", want "[%-a]"Sprintf("%v", &amp;b) =&gt; "b", want "[%+a]"
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org9ef2e6f">
+<h2 id="org9ef2e6f">Creating simple code</h2>
+<div class="outline-text-2" id="text-org9ef2e6f">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org50b6c0a">
+<h3 id="org50b6c0a">Simple design</h3>
+<p>
+Extreme Programming (c 1999) offers 4 rules.
+</p>
+<blockquote nil>
+<ul>
+<li>Passes the tests</li>
+<li>Reveals intention</li>
+<li>No duplication</li>
+<li>Fewest elements (types, functions, &#x2026;)</li>
+
+</ul>
+
+<p>
+&#x2013; Kent Beck
+</p>
+</blockquote>
+
+<p>
+Somehow seems surprising?
+</p>
+<ul>
+<li>'Passes tests' makes the list because tests describe intent. Compactness</li>
+<li>No duplication &#x2026; after spending some years with Go, I only partly agree</li>
+
+</ul>
+
+</section>
+<section id="slide-orgc6679f0">
+<h4 id="orgc6679f0">YAGNI</h4>
+<p>
+"You ain't gonna need it"
+"Always implement things when you actually need them, never when you just foresee that you need them."
+</p>
+</section>
+<section id="slide-orgcb2c035">
+<h4 id="orgcb2c035">KISS</h4>
+<p>
+"Keep it simple, stupid" &#x2013; US Navy, 1960
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Rube_Goldberg's_%22Self-Operating_Napkin%22_(cropped).gif" alt="Rube_Goldberg's_%22Self-Operating_Napkin%22_(cropped).gif" />
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf12d824">
+<h3 id="orgf12d824">Factors affecting complexity</h3>
+<p>
+To the internets &#x2026;
+</p>
+</section>
+<section id="slide-org81cd413">
+<h4 id="org81cd413">Compactness</h4>
+<ul>
+<li>Compactness is the property that a design can fit inside a human being's head</li>
+<li>"Does an experienced user need a manual?"</li>
+
+</ul>
+</section>
+<section id="slide-org51b55cd">
+<h4 id="org51b55cd">Orthogonality</h4>
+<ul>
+<li>"the pieces are independent from each other"</li>
+<li>Avoids side effects</li>
+
+</ul>
+</section>
+<section id="slide-org5cd194b">
+<h4 id="org5cd194b">Layers of abstraction</h4>
+<ul>
+<li>Abstractions are good. Many abstractions can be bad</li>
+<li>indirection</li>
+<li>Leakiness</li>
+<li>affects readability</li>
+
+</ul>
+</section>
+<section id="slide-orgdfe77a4">
+<h4 id="orgdfe77a4">Dependencies</h4>
+<ul>
+<li>Minimise</li>
+
+</ul>
+</section>
+<section id="slide-orgd8930b1">
+<h4 id="orgd8930b1">Duplication</h4>
+<ul>
+<li>Complexity is a cost; don't pay it twice.</li>
+<li>Duplicate work can be altered independently - it can become difficult to grok the differences</li>
+<li>Conversely, removal of duplicate could introduce more complexity (see abstraction/indirection)</li>
+
+</ul>
+</section>
+<section id="slide-orgf7a2dc1">
+<h4 id="orgf7a2dc1">Essential complexity</h4>
+<ul>
+<li>After a number of years, requirements can become complex, software too.</li>
+<li>How can you manage complexity?</li>
+<li>Alt. 'where did they put the complexity?'</li>
+
+</ul>
+</section>
+<section id="slide-orgfaef3b8">
+<h4 id="orgfaef3b8">Expressiveness</h4>
+<p>
+People describe functional programming as expressive. 
+I include this topic because it's something Go doesn't include. Something they sacrificed for simplicity
+</p>
+</section>
+<section id="slide-orgd13a7f9">
+<h4 id="orgd13a7f9">Metrics</h4>
+<ul>
+<li>Cyclomatic complexity</li>
+<li>Number of Features</li>
+<li>Scale</li>
+<li>Inputs/outputs</li>
+<li>file/data access</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org8fafe2b">
+<h3 id="org8fafe2b">Constructs</h3>
+<p>
+That Rich Hickey again:
+</p>
+<ul>
+<li>Complex constructs: State, Object, Methods, Syntax, Inheritance, Switch/matching, Vars, Imperative loops, Actors, ORM, Conditionals.</li>
+<li>Simple constructs: Values, Functions, Namespaces, Data, Polymorphism, Managed refs, Set functions, Queues, Declarative data manipulation, Rules, Consistency.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org720a943">
+<h2 id="org720a943">Making our Go Simple</h2>
+<div class="outline-text-2" id="text-org720a943">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org21d6d88">
+<h3 id="org21d6d88">Go Proverbs</h3>
+<p>
+<a href="https://go-proverbs.github.io/">Another talk</a> by Rob Pike
+</p>
+<ul>
+<li>"Clear is better than clever"</li>
+<li>Don't communicate by sharing memory, share memory by communicating.</li>
+<li>The bigger the interface, the weaker the abstraction.</li>
+<li>Make the zero value useful.</li>
+<li>A little copying is better than a little dependency. See <a href="https://golang.org/pkg/strconv/#IsPrint">strconv.IsPrint()</a></li>
+<li>Gofmt's style is no one's favorite, yet gofmt is everyone's favorite.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org70a93f6">
+<h3 id="org70a93f6">General tips</h3>
+<ul>
+<li>defer: <a href="https://gobyexample.com/defer">https://gobyexample.com/defer</a></li>
+<li>favour functions over methods. "Data is simple"</li>
+<li>collections: <a href="https://gobyexample.com/collection-functions">https://gobyexample.com/collection-functions</a>
+<ul>
+<li>or subtyping the slice and putting methods on it?</li>
+<li>or just use a for loop. YAGNI</li>
+
+</ul></li>
+<li>Multiple return values</li>
+<li>Empty struct
+<ul>
+<li><a href="https://dave.cheney.net/2014/03/25/the-empty-struct">https://dave.cheney.net/2014/03/25/the-empty-struct</a></li>
+<li><a href="https://godoc.org/github.com/bradfitz/iter">https://godoc.org/github.com/bradfitz/iter</a></li>
+
+</ul></li>
+<li>Anonymous structs
+<ul>
+<li>More private than private</li>
+<li>Templates</li>
+<li>Table driven tests</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd180c24">
+<h3 id="orgd180c24">Concurrency</h3>
+<div class="outline-text-3" id="text-orgd180c24">
+</div>
+</section>
+<section id="slide-org36e3980">
+<h4 id="org36e3980">Channels have curious properties. Fewer is better</h4>
+
+<div class="figure">
+<p><img src="https://1.bp.blogspot.com/-1SxzJGvpoBs/WPtUW3P6eJI/AAAAAAAAE60/STc3bHVaP-gHUdEpTdFvJc3AKuTiq4swQCLcB/s1600/KITTEN+GIF+%E2%80%A2+How+hard+is+to+take+a+picture+of+10+kittens+together+It+is+impurrsible+mission.gif" alt="KITTEN+GIF+%E2%80%A2+How+hard+is+to+take+a+picture+of+10+kittens+together+It+is+impurrsible+mission.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org5a22d38">
+<h4 id="org5a22d38">The curious channel</h4>
+<ul>
+<li>Channels block
+<ul>
+<li>sending before setting up a receiver: blocks forever</li>
+<li>receiving before setting up a sender: blocks forever</li>
+
+</ul></li>
+<li>sending on a closed channel panics</li>
+<li>sending on a nil channel blocks forever</li>
+<li>receiving from a closed channel returns immediately. `_, ok := &lt;-ch`</li>
+<li>A receive from a nil channel blocks forever &#x2026; <a href="https://dave.cheney.net/2014/03/19/channel-axioms">https://dave.cheney.net/2014/03/19/channel-axioms</a></li>
+<li>buffered channels introduce 2 modes of behaviour. Can be harder to test</li>
+
+</ul>
+</section>
+<section id="slide-orgc832926">
+<h4 id="orgc832926">So &#x2026;</h4>
+<ul>
+<li>Close on the sender side when done</li>
+<li><a href="https://gobyexample.com/closing-channels">https://gobyexample.com/closing-channels</a></li>
+<li>Reading: range where possible</li>
+<li><a href="https://gobyexample.com/range-over-channels">https://gobyexample.com/range-over-channels</a></li>
+<li>Don't go crazy with channel synchronisations</li>
+<li><a href="https://gobyexample.com/channel-synchronization">https://gobyexample.com/channel-synchronization</a></li>
+
+</ul>
+</section>
+<section id="slide-org68060de">
+<h4 id="org68060de">Long-running vs short-running</h4>
+<ul>
+<li>Given a task that you need to run often</li>
+<li>Where possible, pass the value with some contextual info rather than firing up a separate channel for each task</li>
+
+</ul>
+
+</section>
+<section id="slide-org3bd997b">
+<h4 id="org3bd997b">Helpers</h4>
+<ul>
+<li>Waitgroups: <a href="https://golang.org/pkg/sync/#example_WaitGroup">https://golang.org/pkg/sync/#example_WaitGroup</a></li>
+<li>context: <a href="https://golang.org/pkg/context/#example_WithCancel">https://golang.org/pkg/context/#example_WithCancel</a></li>
+<li>The 'Done' trick: <a href="https://golang.org/src/context/context.go?s=325:333#L325">https://golang.org/src/context/context.go?s=325:333#L325</a></li>
+
+</ul>
+</section>
+<section id="slide-org5be2399">
+<h4 id="org5be2399">Mutexes</h4>
+<ul>
+<li>uh, shared state</li>
+<li>BUT sometimes simpler than channels</li>
+<li><a href="https://gobyexample.com/mutexes">https://gobyexample.com/mutexes</a></li>
+<li><a href="https://gobyexample.com/stateful-goroutines">https://gobyexample.com/stateful-goroutines</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orge1a55e3">
+<h3 id="orge1a55e3">@movio</h3>
+<ul>
+<li>Embrace the standard library.</li>
+<li>Minimise abstraction/indirection.</li>
+<li>Prioritise service-level tests ('medium-size')
+<ul>
+<li>Use interfaces and mocks sparingly</li>
+<li>httptest is great</li>
+
+</ul></li>
+<li>Favour package-private over public, local over package-global
+<ul>
+<li>At Movio, almost all our code is in main packages</li>
+<li>Use `if err := someFunc(); err != nil {`</li>
+
+</ul></li>
+<li>Favour composition over embedding/subtyping/interfaces</li>
+<li>A little consideration before adding a 3rd party library</li>
+<li>A little copy-paste before writing a shared library</li>
+<li>Group variable declarations together with `var(&#x2026;)`</li>
+<li>FSMs for long-running tasks</li>
+<li>close(channel) for broadcasting messages</li>
+<li>http+json for synchronous comms</li>
+<li>Prometheus for alerting</li>
+
+</ul>
+</section>
+<section id="slide-orgf3c2a55">
+<h4 id="orgf3c2a55">Microservices</h4>
+<ul>
+<li>Microservices help to keep code compact</li>
+<li>Kubernetes: cheap and easy to add services</li>
+<li>Split up services when one becomes complex</li>
+<li>Merge services when interactions become complex</li>
+<li>Fail hard when something goes badly wrong. Fatal when manual intervention is needed</li>
+<li>BUT &#x2026; some complexity is moved to kubernetes &amp; service interactions</li>
+
+</ul>
+</section>
+<section id="slide-org7f0dd98">
+<h4 id="org7f0dd98">MISTY</h4>
+<p>
+"Make it simpler, thank you"
+</p>
+<ul>
+<li>Reviews ask common questions: "simplify", "remove ambiguity", "remove feature", "remove abstraction", "remove dependency", "delete code"</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgc5bd276">
+<h2 id="orgc5bd276">What's not simple?</h2>
+<ul>
+<li>Time parsing/formatting <a href="https://gobyexample.com/time-formatting-parsing">https://gobyexample.com/time-formatting-parsing</a></li>
+<li>vendoring (yet)</li>
+<li>GOPATH (so far)</li>
+<li>Deleting from a slice</li>
+<li>maps as sets</li>
+<li>Sorted maps</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf6171c2">
+<h2 id="orgf6171c2">Discussion</h2>
+<p>
+&gt; Wat u fink abt Go?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org2cf37a0">
+<h2 id="org2cf37a0">Sources</h2>
+<div class="outline-text-2" id="text-org2cf37a0">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org0fb1aef">
+<h3 id="org0fb1aef">Go</h3>
+<ul>
+<li><a href="https://talks.golang.org/2015/simplicity-is-complicated.slide#1">https://talks.golang.org/2015/simplicity-is-complicated.slide#1</a></li>
+<li><a href="https://dave.cheney.net/2015/03/08/simplicity-and-collaboration">https://dave.cheney.net/2015/03/08/simplicity-and-collaboration</a></li>
+<li><a href="https://dave.cheney.net/2017/06/18/simplicity-debt-redux">https://dave.cheney.net/2017/06/18/simplicity-debt-redux</a></li>
+<li><a href="https://commandcenter.blogspot.co.nz/2012/06/less-is-exponentially-more.html">https://commandcenter.blogspot.co.nz/2012/06/less-is-exponentially-more.html</a></li>
+<li><a href="https://www.sitepoint.com/simple-clutter-free-programming-with-go/">https://www.sitepoint.com/simple-clutter-free-programming-with-go/</a></li>
+<li><a href="https://talks.golang.org/2012/splash.article">https://talks.golang.org/2012/splash.article</a></li>
+<li><a href="https://go-proverbs.github.io/">https://go-proverbs.github.io/</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgccceb54">
+<h3 id="orgccceb54">Non-Go</h3>
+<ul>
+<li>Rich Hickey: <a href="https://www.infoq.com/presentations/Simple-Made-Easy">https://www.infoq.com/presentations/Simple-Made-Easy</a></li>
+<li>Ward Cunningham: <a href="http://www.artima.com/intv/simplest2.html">http://www.artima.com/intv/simplest2.html</a></li>
+<li>Muntzing: <a href="https://en.wikipedia.org/wiki/Muntzing">https://en.wikipedia.org/wiki/Muntzing</a></li>
+<li>The art of programming <a href="http://www.catb.org/~esr/writings/taoup/html/index.html">http://www.catb.org/~esr/writings/taoup/html/index.html</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<p> Created by am. </p>
+<script src="file:///home/am/d/reveal.js-3.5.0/lib/js/head.min.js"></script>
+<script src="file:///home/am/d/reveal.js-3.5.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c/t',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+margin: 0.10,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:///home/am/d/reveal.js-3.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/am/d/reveal.js-3.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/am/d/reveal.js-3.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
