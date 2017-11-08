@@ -15,7 +15,7 @@
 #+REVEAL_POSTAMBLE: <p> Created by am. </p>
 #+REVEAL_PLUGINS: (markdown notes)
 #+REVEAL_EXTRA_CSS: ./local.css
-#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/reveal.js/3.0.0/
 #+STARTUP: showall
 
 # Local Variables:

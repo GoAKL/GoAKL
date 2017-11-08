@@ -7,9 +7,9 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
 
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/solarized.css" id="theme"/>
 
 <link rel="stylesheet" href="./local.css"/>
 
@@ -19,7 +19,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -28,29 +28,29 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Simplicity in Go</h1><h2 class="author">Am Laher</h2><p class="date">Created: 2017-11-08 Wed 16:26</p>
+<section id="sec-title-slide"><h1 class="title">Simplicity in Go</h1><h2 class="author">Am Laher</h2><p class="date">Created: 2017-11-08 Wed 16:32</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org3ec1911">Simplicity</a></li>
-<li><a href="#/slide-org8c71828">Background</a></li>
-<li><a href="#/slide-org16da590">How is Go simple?</a></li>
-<li><a href="#/slide-orgb3d4737">Some basic illustrations</a></li>
-<li><a href="#/slide-orgb850487">Creating simple code</a></li>
-<li><a href="#/slide-org6f741bc">Making our Go Simple</a></li>
-<li><a href="#/slide-orgba4657f">What's not simple?</a></li>
-<li><a href="#/slide-org898e826">Discussion</a></li>
-<li><a href="#/slide-orga24cf2b">Sources</a></li>
+<li><a href="#/slide-org9b6c3fb">Simplicity</a></li>
+<li><a href="#/slide-orgfdc0773">Background</a></li>
+<li><a href="#/slide-org17fbae5">How is Go simple?</a></li>
+<li><a href="#/slide-org7be17cf">Some basic illustrations</a></li>
+<li><a href="#/slide-org7b4b8a3">Creating simple code</a></li>
+<li><a href="#/slide-org9f0d18d">Making our Go Simple</a></li>
+<li><a href="#/slide-org77dbea3">What's not simple?</a></li>
+<li><a href="#/slide-org6f65cd6">Discussion</a></li>
+<li><a href="#/slide-org2730815">Sources</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-org3ec1911">
-<h2 id="org3ec1911">Simplicity</h2>
+<section id="slide-org9b6c3fb">
+<h2 id="org9b6c3fb">Simplicity</h2>
 <blockquote nil>
 <p>
 You know you've achieved perfection in design, 
@@ -60,8 +60,8 @@ But when you have nothing more to take away. &#x2013; Antoine de Saint Exupery.
 </blockquote>
 
 </section>
-<section id="slide-org87cebd9">
-<h4 id="org87cebd9">Simple design</h4>
+<section id="slide-org430aa18">
+<h4 id="org430aa18">Simple design</h4>
 
 <div class="figure">
 <p><img src="https://talks.golang.org/2015/simplicity-is-complicated/gopherslide2smblue.jpg" alt="gopherslide2smblue.jpg" />
@@ -71,22 +71,22 @@ But when you have nothing more to take away. &#x2013; Antoine de Saint Exupery.
 </section>
 </section>
 <section>
-<section id="slide-orgdc778f6">
-<h3 id="orgdc778f6">We all like simplicity</h3>
+<section id="slide-orgbf8f6cf">
+<h3 id="orgbf8f6cf">We all like simplicity</h3>
 <p>
 Many technologies are sold on simplicity. Simplicity is simple.
 </p>
 </section>
-<section id="slide-org8213974">
-<h4 id="org8213974">Simple is good. The end</h4>
+<section id="slide-org6a0a296">
+<h4 id="org6a0a296">Simple is good. The end</h4>
 
 <div class="figure">
 <p><img src="https://media1.tenor.com/images/4014ee90f48cadc67c08d01e2f3e143d/tenor.gif" alt="tenor.gif" />
 </p>
 </div>
 </section>
-<section id="slide-orge2e3040">
-<h4 id="orge2e3040">But &#x2026;</h4>
+<section id="slide-orgc949f85">
+<h4 id="orgc949f85">But &#x2026;</h4>
 <blockquote nil>
 <p>
 Simplicity is complicated &#x2013; Rob Pike
@@ -101,13 +101,13 @@ Simplicity is the art of hiding complexity. &#x2013; Rob Pike
 </section>
 </section>
 <section>
-<section id="slide-org8c71828">
-<h2 id="org8c71828">Background</h2>
-<div class="outline-text-2" id="text-org8c71828">
+<section id="slide-orgfdc0773">
+<h2 id="orgfdc0773">Background</h2>
+<div class="outline-text-2" id="text-orgfdc0773">
 </div>
 </section>
-<section id="slide-org14fd96a">
-<h4 id="org14fd96a">Define Simplicity</h4>
+<section id="slide-org84f593a">
+<h4 id="org84f593a">Define Simplicity</h4>
 <ul>
 <li>Easy to understand</li>
 <li>plain, basic, unadorned</li>
@@ -115,15 +115,15 @@ Simplicity is the art of hiding complexity. &#x2013; Rob Pike
 
 </ul>
 </section>
-<section id="slide-org14aeefd">
-<h4 id="org14aeefd">Etymology</h4>
+<section id="slide-orgd162e1d">
+<h4 id="orgd162e1d">Etymology</h4>
 <ul>
 <li>The noun sense (mid 16th century) originally referred to a medicine made from one constituent, especially from one plant.</li>
 
 </ul>
 </section>
-<section id="slide-org84df20b">
-<h4 id="org84df20b">Alt.:</h4>
+<section id="slide-orgc6ab81f">
+<h4 id="orgc6ab81f">Alt.:</h4>
 <ul>
 <li>simple: "one braid"</li>
 <li>complex: "many braids"</li>
@@ -134,23 +134,23 @@ Simplicity is the art of hiding complexity. &#x2013; Rob Pike
 </section>
 </section>
 <section>
-<section id="slide-org83fd643">
-<h3 id="org83fd643">Simple vs easy</h3>
+<section id="slide-org7c47ea5">
+<h3 id="org7c47ea5">Simple vs easy</h3>
 <ul>
 <li>Easy != Simple. 2 similar concepts with an interesting relationship</li>
 <li>Simple is often easy, but not always &#x2026;</li>
 
 </ul>
 </section>
-<section id="slide-org46df1ec">
-<h4 id="org46df1ec">But &#x2026;</h4>
+<section id="slide-orgfb14fd5">
+<h4 id="orgfb14fd5">But &#x2026;</h4>
 <ul>
 <li>eg.1. Making something easier to configure might introduce more complexity in implementation</li>
 
 </ul>
 </section>
-<section id="slide-org3494d7a">
-<h4 id="org3494d7a">But &#x2026;</h4>
+<section id="slide-org2252b8f">
+<h4 id="org2252b8f">But &#x2026;</h4>
 <ul>
 <li>eg.2. making something easier for a future release, might make it more complex for an alternate future</li>
 
@@ -159,30 +159,30 @@ Simplicity is the art of hiding complexity. &#x2013; Rob Pike
 </section>
 </section>
 <section>
-<section id="slide-orgc4c5481">
-<h3 id="orgc4c5481">Simple is important</h3>
+<section id="slide-org504f92e">
+<h3 id="org504f92e">Simple is important</h3>
 <p>
 Why? What does it give us?
 </p>
 </section>
-<section id="slide-org729c31f">
-<h4 id="org729c31f">Why is simplicity important?</h4>
+<section id="slide-org7fb674b">
+<h4 id="org7fb674b">Why is simplicity important?</h4>
 <blockquote nil>
 <p>
 Simplicity is prerequisite for reliability. &#x2013; Edsger Dijkstra
 </p>
 </blockquote>
 </section>
-<section id="slide-org1e0e1b8">
-<h4 id="org1e0e1b8">Why don't we like complexity?</h4>
+<section id="slide-orgb0d2bce">
+<h4 id="orgb0d2bce">Why don't we like complexity?</h4>
 
 <div class="figure">
 <p><img src="https://assets.teenvogue.com/photos/59f3c6cd45b8e93711afefda/master/w_757,c_limit/02.gif" alt="02.gif" /> 
 </p>
 </div>
 </section>
-<section id="slide-org4a558e7">
-<h4 id="org4a558e7">Meta</h4>
+<section id="slide-org941c589">
+<h4 id="org941c589">Meta</h4>
 <ul>
 <li>I think it's a useful way to describe a language or solution</li>
 <li>In practice, it's not a one-dimensional measure. "What's simple about &#x2026;" characterises a language/solution</li>
@@ -193,22 +193,22 @@ Simplicity is prerequisite for reliability. &#x2013; Edsger Dijkstra
 </section>
 </section>
 <section>
-<section id="slide-org537eed2">
-<h3 id="org537eed2">Other languages</h3>
+<section id="slide-orge04a9d3">
+<h3 id="orge04a9d3">Other languages</h3>
 <p>
 Many languages sell themselves in terms of simplicity
 </p>
 </section>
-<section id="slide-org4d1881e">
-<h4 id="org4d1881e">Python</h4>
+<section id="slide-orgf156136">
+<h4 id="orgf156136">Python</h4>
 <blockquote nil>
 <p>
 "There should be one — and preferably only one — obvious way to do it." (Zen of Python)
 </p>
 </blockquote>
 </section>
-<section id="slide-org8163a7f">
-<h4 id="org8163a7f">Clojure</h4>
+<section id="slide-org2689245">
+<h4 id="org2689245">Clojure</h4>
 <blockquote nil>
 <ul>
 <li>"Simplicity is hard work. But in the long haul the person with a simpler system is gonna wipe the plate with you. Because they can change things when you are struggling to push elephants around"  (Rich Hickey)</li>
@@ -222,16 +222,16 @@ Many languages sell themselves in terms of simplicity
 </ul>
 </blockquote>
 </section>
-<section id="slide-orgc49d060">
-<h4 id="orgc49d060">Ruby</h4>
+<section id="slide-org4648da8">
+<h4 id="org4648da8">Ruby</h4>
 <ul>
 <li>Ruby is simple in appearance, but is very complex inside, just like our human body. (Yukihiro Matsumoto)</li>
 <li>"principle of least surprise."</li>
 
 </ul>
 </section>
-<section id="slide-org0aa5c48">
-<h4 id="org0aa5c48">Java</h4>
+<section id="slide-org2f3895f">
+<h4 id="org2f3895f">Java</h4>
 <ul>
 <li>"Simplicity is one of Java's overriding design goals."</li>
 <li>"Simplicity and removal of many "features" of dubious worth from its C and C++ ancestors keep Java relatively small and reduce the programmer's burden in producing reliable applications"</li>
@@ -242,16 +242,16 @@ Many languages sell themselves in terms of simplicity
 </section>
 </section>
 <section>
-<section id="slide-org02d406c">
-<h3 id="org02d406c">Simplicity in Go</h3>
+<section id="slide-orgea2bf7f">
+<h3 id="orgea2bf7f">Simplicity in Go</h3>
 <p>
 Go was borne of frustration with the direction of C++ (and many other languages). 
 Languages keep adding features, becoming more and more like one another. With that comes complexity.
 </p>
 
 </section>
-<section id="slide-org0e099f3">
-<h4 id="org0e099f3">Simplicity is complicated</h4>
+<section id="slide-org9fb1fbe">
+<h4 id="org9fb1fbe">Simplicity is complicated</h4>
 <p>
 <a href="https://github.com/golang/talks/blob/master/2015/simplicity-is-complicated.slide">A talk</a> by Rob Pike (2015)
 </p>
@@ -268,21 +268,21 @@ Languages keep adding features, becoming more and more like one another. With th
 </section>
 </section>
 <section>
-<section id="slide-org16da590">
-<h2 id="org16da590">How is Go simple?</h2>
-<div class="outline-text-2" id="text-org16da590">
+<section id="slide-org17fbae5">
+<h2 id="org17fbae5">How is Go simple?</h2>
+<div class="outline-text-2" id="text-org17fbae5">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org83cd41f">
-<h3 id="org83cd41f">Small spec.</h3>
+<section id="slide-org20cb273">
+<h3 id="org20cb273">Small spec.</h3>
 <p>
 It's <a href="https://golang.org/ref/spec">a really short document</a>
 </p>
 </section>
-<section id="slide-org8c35632">
-<h4 id="org8c35632">whereas &#x2026;</h4>
+<section id="slide-orgef91fd1">
+<h4 id="orgef91fd1">whereas &#x2026;</h4>
 <ul>
 <li><a href="https://docs.oracle.com/javase/specs/jls/se8/html/index.html">Contents page for another language spec</a></li>
 <li>Apologies for singling out Java. It's just something I'm familiar with</li>
@@ -291,14 +291,14 @@ It's <a href="https://golang.org/ref/spec">a really short document</a>
 </section>
 </section>
 <section>
-<section id="slide-org1ef5ab4">
-<h3 id="org1ef5ab4">In and out</h3>
+<section id="slide-orgcf3034c">
+<h3 id="orgcf3034c">In and out</h3>
 <p>
 Go implements a small feature-set. Which ones did they keep?
 </p>
 </section>
-<section id="slide-orgae054e6">
-<h4 id="orgae054e6">In</h4>
+<section id="slide-orgfb555f0">
+<h4 id="orgfb555f0">In</h4>
 <p>
 As a modern language, the basics are done well
 </p>
@@ -312,8 +312,8 @@ As a modern language, the basics are done well
 
 </ul>
 </section>
-<section id="slide-org48bf577">
-<h4 id="org48bf577">Out</h4>
+<section id="slide-org4845f48">
+<h4 id="org4845f48">Out</h4>
 <ul>
 <li>Implicit numeric conversions</li>
 <li>constructors and destructors</li>
@@ -331,8 +331,8 @@ As a modern language, the basics are done well
 </section>
 </section>
 <section>
-<section id="slide-orgf8e2af8">
-<h3 id="orgf8e2af8">Control structures</h3>
+<section id="slide-org5aabd5b">
+<h3 id="org5aabd5b">Control structures</h3>
 <ul>
 <li>Just one type of loop 
 <ul>
@@ -364,8 +364,8 @@ As a modern language, the basics are done well
 </section>
 </section>
 <section>
-<section id="slide-orgf0faae0">
-<h3 id="orgf0faae0">Types</h3>
+<section id="slide-org5d4600a">
+<h3 id="org5d4600a">Types</h3>
 <p>
 Go is strongly typed, with type inference. 
 </p>
@@ -378,8 +378,8 @@ Go is strongly typed, with type inference.
 
 </ul>
 </section>
-<section id="slide-org580ae81">
-<h4 id="org580ae81">Very few collection types</h4>
+<section id="slide-org4f3005c">
+<h4 id="org4f3005c">Very few collection types</h4>
 <ul>
 <li>slices</li>
 <li>maps</li>
@@ -387,8 +387,8 @@ Go is strongly typed, with type inference.
 
 </ul>
 </section>
-<section id="slide-org841a4ab">
-<h4 id="org841a4ab">No traditional inheritance</h4>
+<section id="slide-orgf639fc2">
+<h4 id="orgf639fc2">No traditional inheritance</h4>
 <ul>
 <li>Composition</li>
 <li>Interfaces</li>
@@ -397,8 +397,8 @@ Go is strongly typed, with type inference.
 
 </ul>
 </section>
-<section id="slide-orgdce8d62">
-<h4 id="orgdce8d62">No generics</h4>
+<section id="slide-org793eb1b">
+<h4 id="org793eb1b">No generics</h4>
 <ul>
 <li>Simpler for the language creators!</li>
 <li>Can feel a bit copy-paste. Repetition == complexity?</li>
@@ -408,8 +408,8 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-orge1343c7">
-<h3 id="orge1343c7">Concurrency</h3>
+<section id="slide-org0c9f0c4">
+<h3 id="org0c9f0c4">Concurrency</h3>
 <ul>
 <li>Go doesn't make concurrency easy (nothing does afaik), but it does offer some simple constructs</li>
 <li>Prefer message passing over shared state</li>
@@ -420,8 +420,8 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-org8f34e55">
-<h3 id="org8f34e55">Deployment</h3>
+<section id="slide-org197fa1b">
+<h3 id="org197fa1b">Deployment</h3>
 <ul>
 <li>Compiled standalone executable.</li>
 <li>Smallish binaries -&gt; small containers.</li>
@@ -433,12 +433,12 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-org98cc930">
-<h3 id="org98cc930">Batteries-included standard library. 'Just enough'</h3>
-<div class="outline-text-3" id="text-org98cc930">
+<section id="slide-orgbf7e721">
+<h3 id="orgbf7e721">Batteries-included standard library. 'Just enough'</h3>
+<div class="outline-text-3" id="text-orgbf7e721">
 </div>
 <ul class="org-ul">
-<li><a id="org5170bc1"></a>Just enough<br />
+<li><a id="org9c1b137"></a>Just enough<br />
 <ul>
 <li>http, json, ssl, crypto, template, sync/atomic,</li>
 <li>testing, httptest</li>
@@ -447,8 +447,8 @@ Go is strongly typed, with type inference.
 </ul>
 </li>
 </section>
-<section id="slide-org30a5317">
-<h4 id="org30a5317">Slightly limited</h4>
+<section id="slide-orgf87ece7">
+<h4 id="orgf87ece7">Slightly limited</h4>
 <ul>
 <li>log, sql, sort, flag, http-routing, cookies</li>
 <li>people often use a 3rd party package for these</li>
@@ -457,8 +457,8 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-orga2b1320">
-<h3 id="orga2b1320">Simple tooling</h3>
+<section id="slide-orgff391d5">
+<h3 id="orgff391d5">Simple tooling</h3>
 <ul>
 <li>go run</li>
 <li>go test (coverage etc)</li>
@@ -470,8 +470,8 @@ Go is strongly typed, with type inference.
 
 </ul>
 </section>
-<section id="slide-orgd0f7b97">
-<h4 id="orgd0f7b97">Compiler efficiency</h4>
+<section id="slide-org8ecf2d8">
+<h4 id="org8ecf2d8">Compiler efficiency</h4>
 <ul>
 <li>e.g. packages imported as compiled objects (not source)</li>
 <li>package dependencies can't be circular</li>
@@ -482,8 +482,8 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-org840efae">
-<h3 id="org840efae">Simple code in the stdlib</h3>
+<section id="slide-org3255c08">
+<h3 id="org3255c08">Simple code in the stdlib</h3>
 <ul>
 <li>check the code. I find it readable.</li>
 <li>examples to follow &#x2026;</li>
@@ -492,31 +492,31 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-org3f1d937">
-<h3 id="org3f1d937">Packages</h3>
-<div class="outline-text-3" id="text-org3f1d937">
+<section id="slide-org035a0f7">
+<h3 id="org035a0f7">Packages</h3>
+<div class="outline-text-3" id="text-org035a0f7">
 </div>
 </section>
-<section id="slide-org341fdbb">
-<h4 id="org341fdbb">Package dependencies allow one direction only</h4>
+<section id="slide-org301f118">
+<h4 id="org301f118">Package dependencies allow one direction only</h4>
 <ul>
 <li>Characterises packages e.g. ioutil -&gt; io -&gt; os</li>
 
 </ul>
 </section>
-<section id="slide-org941d86b">
-<h4 id="org941d86b"><a href="https://github.com/davecheney/graphpkg">https://github.com/davecheney/graphpkg</a></h4>
+<section id="slide-org879b0fe">
+<h4 id="org879b0fe"><a href="https://github.com/davecheney/graphpkg">https://github.com/davecheney/graphpkg</a></h4>
 </section>
-<section id="slide-org2edd0fa">
-<h4 id="org2edd0fa">Go packages tend to have plenty of files in a single package.</h4>
+<section id="slide-org57faecd">
+<h4 id="org57faecd">Go packages tend to have plenty of files in a single package.</h4>
 <ul>
 <li>privacy is only implemented at package level</li>
 <li>'./internal' packages offer an additional level of structure for private types/functions</li>
 
 </ul>
 </section>
-<section id="slide-org29a0e3d">
-<h4 id="org29a0e3d">Vendoring</h4>
+<section id="slide-org5a59b2a">
+<h4 id="org5a59b2a">Vendoring</h4>
 <ul>
 <li>Repeatable, stable builds.</li>
 <li>Eliminates build-time fragility</li>
@@ -528,8 +528,8 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-orgb3d4737">
-<h2 id="orgb3d4737">Some basic illustrations</h2>
+<section id="slide-org7be17cf">
+<h2 id="org7be17cf">Some basic illustrations</h2>
 <ul>
 <li>Some code samples from Go</li>
 <li>Sorry no gifs</li>
@@ -538,8 +538,8 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-org902f714">
-<h3 id="org902f714">Error handling</h3>
+<section id="slide-org84a3934">
+<h3 id="org84a3934">Error handling</h3>
 <ul>
 <li>An example from Go's standard lib: <a href="https://golang.org/src/net/http/client.go?s=16518:16570#L480">http.Client.Do()</a></li>
 <li>I love the simplicity of Go's error handling.</li>
@@ -550,8 +550,8 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-orgf9c0c29">
-<h3 id="orgf9c0c29">Concurrency</h3>
+<section id="slide-orga8275d0">
+<h3 id="orga8275d0">Concurrency</h3>
 <ul>
 <li>Don't communicate by sharing memory, share memory by communicating.</li>
 <li>i.e. Where possible use channels rather than mutexes</li>
@@ -577,8 +577,8 @@ Go is strongly typed, with type inference.
 </div>
 
 </section>
-<section id="slide-org3d6753e">
-<h4 id="org3d6753e">Using channels</h4>
+<section id="slide-orgfd599d8">
+<h4 id="orgfd599d8">Using channels</h4>
 <p>
 <a href="https://tour.golang.org/concurrency/2">https://tour.golang.org/concurrency/2</a>
 <a href="https://golang.org/doc/effective_go.html#channels">https://golang.org/doc/effective_go.html#channels</a>
@@ -587,8 +587,8 @@ Go is strongly typed, with type inference.
 </section>
 </section>
 <section>
-<section id="slide-org0f3ab67">
-<h3 id="org0f3ab67">Marshaling</h3>
+<section id="slide-org954c952">
+<h3 id="org954c952">Marshaling</h3>
 <ul>
 <li>I think Go makes serialization easy, by keeping it simple.</li>
 <li>Compact - struct tags indicate how to serialize the type</li>
@@ -620,8 +620,8 @@ os.Stdout.<span style="color: #6c3163; font-weight: bold;">Write</span><span sty
 </p>
 
 </section>
-<section id="slide-org0eddf5b">
-<h4 id="org0eddf5b">Unmarshaling</h4>
+<section id="slide-org64572ad">
+<h4 id="org64572ad">Unmarshaling</h4>
 <p>
 <a href="https://golang.org/pkg/encoding/json/#Unmarshal">https://golang.org/pkg/encoding/json/#Unmarshal</a>
 </p>
@@ -633,8 +633,8 @@ os.Stdout.<span style="color: #6c3163; font-weight: bold;">Write</span><span sty
 </section>
 </section>
 <section>
-<section id="slide-org4df4093">
-<h3 id="org4df4093">Table Driven Tests</h3>
+<section id="slide-org7e2c2e1">
+<h3 id="org7e2c2e1">Table Driven Tests</h3>
 <ul>
 <li>Shortened from a test in the flag package</li>
 <li>See <a href="https://golang.org/src/fmt/fmt_test.go#L134">https://golang.org/src/fmt/fmt_test.go#L134</a></li>
@@ -671,8 +671,8 @@ os.Stdout.<span style="color: #6c3163; font-weight: bold;">Write</span><span sty
 </section>
 </section>
 <section>
-<section id="slide-orgb3e3338">
-<h3 id="orgb3e3338">Results</h3>
+<section id="slide-org513afde">
+<h3 id="org513afde">Results</h3>
 <p>
 Sprintf("%s", &amp;b) =&gt; "b", want "[%a]"Sprintf("%0s", &amp;b) =&gt; "b", want "[%-a]"Sprintf("%v", &amp;b) =&gt; "b", want "[%+a]"
 </p>
@@ -680,15 +680,15 @@ Sprintf("%s", &amp;b) =&gt; "b", want "[%a]"Sprintf("%0s", &amp;b) =&gt; "b", wa
 </section>
 </section>
 <section>
-<section id="slide-orgb850487">
-<h2 id="orgb850487">Creating simple code</h2>
-<div class="outline-text-2" id="text-orgb850487">
+<section id="slide-org7b4b8a3">
+<h2 id="org7b4b8a3">Creating simple code</h2>
+<div class="outline-text-2" id="text-org7b4b8a3">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgf36dd1b">
-<h3 id="orgf36dd1b">Simple design</h3>
+<section id="slide-org3afbe0a">
+<h3 id="org3afbe0a">Simple design</h3>
 <p>
 Extreme Programming (c 1999) offers 4 rules.
 </p>
@@ -716,15 +716,15 @@ Somehow seems surprising?
 </ul>
 
 </section>
-<section id="slide-orgd834bfa">
-<h4 id="orgd834bfa">YAGNI</h4>
+<section id="slide-org33df38e">
+<h4 id="org33df38e">YAGNI</h4>
 <p>
 "You ain't gonna need it"
 "Always implement things when you actually need them, never when you just foresee that you need them."
 </p>
 </section>
-<section id="slide-org331cb62">
-<h4 id="org331cb62">KISS</h4>
+<section id="slide-org5e17978">
+<h4 id="org5e17978">KISS</h4>
 <p>
 "Keep it simple, stupid" &#x2013; US Navy, 1960
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Rube_Goldberg's_%22Self-Operating_Napkin%22_(cropped).gif" alt="Rube_Goldberg's_%22Self-Operating_Napkin%22_(cropped).gif" />
@@ -733,30 +733,30 @@ Somehow seems surprising?
 </section>
 </section>
 <section>
-<section id="slide-org3c55d15">
-<h3 id="org3c55d15">Factors affecting complexity</h3>
+<section id="slide-org6c0391e">
+<h3 id="org6c0391e">Factors affecting complexity</h3>
 <p>
 To the internets &#x2026;
 </p>
 </section>
-<section id="slide-org35fdc8c">
-<h4 id="org35fdc8c">Compactness</h4>
+<section id="slide-orgc8b14f1">
+<h4 id="orgc8b14f1">Compactness</h4>
 <ul>
 <li>Compactness is the property that a design can fit inside a human being's head</li>
 <li>"Does an experienced user need a manual?"</li>
 
 </ul>
 </section>
-<section id="slide-org10cae47">
-<h4 id="org10cae47">Orthogonality</h4>
+<section id="slide-orgd2a25e9">
+<h4 id="orgd2a25e9">Orthogonality</h4>
 <ul>
 <li>"the pieces are independent from each other"</li>
 <li>Avoids side effects</li>
 
 </ul>
 </section>
-<section id="slide-org9006e42">
-<h4 id="org9006e42">Layers of abstraction</h4>
+<section id="slide-orgb0552c8">
+<h4 id="orgb0552c8">Layers of abstraction</h4>
 <ul>
 <li>Abstractions are good. Many abstractions can be bad</li>
 <li>indirection</li>
@@ -765,15 +765,15 @@ To the internets &#x2026;
 
 </ul>
 </section>
-<section id="slide-orgc699d56">
-<h4 id="orgc699d56">Dependencies</h4>
+<section id="slide-orgddabce7">
+<h4 id="orgddabce7">Dependencies</h4>
 <ul>
 <li>Minimise</li>
 
 </ul>
 </section>
-<section id="slide-orga5d9c7b">
-<h4 id="orga5d9c7b">Duplication</h4>
+<section id="slide-orgad27bc0">
+<h4 id="orgad27bc0">Duplication</h4>
 <ul>
 <li>Complexity is a cost; don't pay it twice.</li>
 <li>Duplicate work can be altered independently - it can become difficult to grok the differences</li>
@@ -781,8 +781,8 @@ To the internets &#x2026;
 
 </ul>
 </section>
-<section id="slide-orge4ae903">
-<h4 id="orge4ae903">Essential complexity</h4>
+<section id="slide-org184668b">
+<h4 id="org184668b">Essential complexity</h4>
 <ul>
 <li>After a number of years, requirements can become complex, software too.</li>
 <li>How can you manage complexity?</li>
@@ -790,15 +790,15 @@ To the internets &#x2026;
 
 </ul>
 </section>
-<section id="slide-org85100a0">
-<h4 id="org85100a0">Expressiveness</h4>
+<section id="slide-orgdb1254b">
+<h4 id="orgdb1254b">Expressiveness</h4>
 <p>
 People describe functional programming as expressive. 
 I include this topic because it's something Go doesn't include. Something they sacrificed for simplicity
 </p>
 </section>
-<section id="slide-org2df7805">
-<h4 id="org2df7805">Metrics</h4>
+<section id="slide-org4eebd6a">
+<h4 id="org4eebd6a">Metrics</h4>
 <ul>
 <li>Cyclomatic complexity</li>
 <li>Number of Features</li>
@@ -811,8 +811,8 @@ I include this topic because it's something Go doesn't include. Something they s
 </section>
 </section>
 <section>
-<section id="slide-orgf81610f">
-<h3 id="orgf81610f">Constructs</h3>
+<section id="slide-org5f25d61">
+<h3 id="org5f25d61">Constructs</h3>
 <p>
 That Rich Hickey again:
 </p>
@@ -825,15 +825,15 @@ That Rich Hickey again:
 </section>
 </section>
 <section>
-<section id="slide-org6f741bc">
-<h2 id="org6f741bc">Making our Go Simple</h2>
-<div class="outline-text-2" id="text-org6f741bc">
+<section id="slide-org9f0d18d">
+<h2 id="org9f0d18d">Making our Go Simple</h2>
+<div class="outline-text-2" id="text-org9f0d18d">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org62c67d7">
-<h3 id="org62c67d7">Go Proverbs</h3>
+<section id="slide-orgfeabce0">
+<h3 id="orgfeabce0">Go Proverbs</h3>
 <p>
 <a href="https://go-proverbs.github.io/">Another talk</a> by Rob Pike
 </p>
@@ -849,8 +849,8 @@ That Rich Hickey again:
 </section>
 </section>
 <section>
-<section id="slide-orgb70b2ff">
-<h3 id="orgb70b2ff">General tips</h3>
+<section id="slide-org540900b">
+<h3 id="org540900b">General tips</h3>
 <ul>
 <li>defer: <a href="https://gobyexample.com/defer">https://gobyexample.com/defer</a></li>
 <li>favour functions over methods. "Data is simple"</li>
@@ -880,21 +880,21 @@ That Rich Hickey again:
 </section>
 </section>
 <section>
-<section id="slide-org5a2f561">
-<h3 id="org5a2f561">Concurrency</h3>
-<div class="outline-text-3" id="text-org5a2f561">
+<section id="slide-org4f9988b">
+<h3 id="org4f9988b">Concurrency</h3>
+<div class="outline-text-3" id="text-org4f9988b">
 </div>
 </section>
-<section id="slide-orga1f7755">
-<h4 id="orga1f7755">Channels have curious properties. Fewer is better</h4>
+<section id="slide-orgb04a32b">
+<h4 id="orgb04a32b">Channels have curious properties. Fewer is better</h4>
 
 <div class="figure">
 <p><img src="https://1.bp.blogspot.com/-1SxzJGvpoBs/WPtUW3P6eJI/AAAAAAAAE60/STc3bHVaP-gHUdEpTdFvJc3AKuTiq4swQCLcB/s1600/KITTEN+GIF+%E2%80%A2+How+hard+is+to+take+a+picture+of+10+kittens+together+It+is+impurrsible+mission.gif" alt="KITTEN+GIF+%E2%80%A2+How+hard+is+to+take+a+picture+of+10+kittens+together+It+is+impurrsible+mission.gif" />
 </p>
 </div>
 </section>
-<section id="slide-orge6a4d8e">
-<h4 id="orge6a4d8e">The curious channel</h4>
+<section id="slide-org196194f">
+<h4 id="org196194f">The curious channel</h4>
 <ul>
 <li>Channels block
 <ul>
@@ -910,8 +910,8 @@ That Rich Hickey again:
 
 </ul>
 </section>
-<section id="slide-org0309871">
-<h4 id="org0309871">So &#x2026;</h4>
+<section id="slide-org17dd3e5">
+<h4 id="org17dd3e5">So &#x2026;</h4>
 <ul>
 <li>Close on the sender side when done</li>
 <li><a href="https://gobyexample.com/closing-channels">https://gobyexample.com/closing-channels</a></li>
@@ -922,8 +922,8 @@ That Rich Hickey again:
 
 </ul>
 </section>
-<section id="slide-org69f7b93">
-<h4 id="org69f7b93">Long-running vs short-running</h4>
+<section id="slide-org9248735">
+<h4 id="org9248735">Long-running vs short-running</h4>
 <ul>
 <li>Given a task that you need to run often</li>
 <li>Where possible, pass the value with some contextual info rather than firing up a separate channel for each task</li>
@@ -931,8 +931,8 @@ That Rich Hickey again:
 </ul>
 
 </section>
-<section id="slide-org6ba798f">
-<h4 id="org6ba798f">Helpers</h4>
+<section id="slide-org91c6f7d">
+<h4 id="org91c6f7d">Helpers</h4>
 <ul>
 <li>Waitgroups: <a href="https://golang.org/pkg/sync/#example_WaitGroup">https://golang.org/pkg/sync/#example_WaitGroup</a></li>
 <li>context: <a href="https://golang.org/pkg/context/#example_WithCancel">https://golang.org/pkg/context/#example_WithCancel</a></li>
@@ -940,8 +940,8 @@ That Rich Hickey again:
 
 </ul>
 </section>
-<section id="slide-orgd8b9418">
-<h4 id="orgd8b9418">Mutexes</h4>
+<section id="slide-orge9e1ac7">
+<h4 id="orge9e1ac7">Mutexes</h4>
 <ul>
 <li>uh, shared state</li>
 <li>BUT sometimes simpler than channels</li>
@@ -952,8 +952,8 @@ That Rich Hickey again:
 </section>
 </section>
 <section>
-<section id="slide-org1771740">
-<h3 id="org1771740">@movio</h3>
+<section id="slide-org0d18065">
+<h3 id="org0d18065">@movio</h3>
 <ul>
 <li>Embrace the standard library.</li>
 <li>Minimise abstraction/indirection.</li>
@@ -980,8 +980,8 @@ That Rich Hickey again:
 
 </ul>
 </section>
-<section id="slide-org2a6381a">
-<h4 id="org2a6381a">Microservices</h4>
+<section id="slide-org81b2ad4">
+<h4 id="org81b2ad4">Microservices</h4>
 <ul>
 <li>Microservices help to keep code compact</li>
 <li>Kubernetes: cheap and easy to add services</li>
@@ -992,8 +992,8 @@ That Rich Hickey again:
 
 </ul>
 </section>
-<section id="slide-org8692893">
-<h4 id="org8692893">MISTY</h4>
+<section id="slide-orgacd257e">
+<h4 id="orgacd257e">MISTY</h4>
 <p>
 "Make it simpler, thank you"
 </p>
@@ -1006,8 +1006,8 @@ That Rich Hickey again:
 </section>
 </section>
 <section>
-<section id="slide-orgba4657f">
-<h2 id="orgba4657f">What's not simple?</h2>
+<section id="slide-org77dbea3">
+<h2 id="org77dbea3">What's not simple?</h2>
 <ul>
 <li>Time parsing/formatting <a href="https://gobyexample.com/time-formatting-parsing">https://gobyexample.com/time-formatting-parsing</a></li>
 <li>vendoring (yet)</li>
@@ -1021,8 +1021,8 @@ That Rich Hickey again:
 </section>
 </section>
 <section>
-<section id="slide-org898e826">
-<h2 id="org898e826">Discussion</h2>
+<section id="slide-org6f65cd6">
+<h2 id="org6f65cd6">Discussion</h2>
 <p>
 &gt; Wat u fink abt Go?
 </p>
@@ -1030,15 +1030,15 @@ That Rich Hickey again:
 </section>
 </section>
 <section>
-<section id="slide-orga24cf2b">
-<h2 id="orga24cf2b">Sources</h2>
-<div class="outline-text-2" id="text-orga24cf2b">
+<section id="slide-org2730815">
+<h2 id="org2730815">Sources</h2>
+<div class="outline-text-2" id="text-org2730815">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org01612a6">
-<h3 id="org01612a6">Go</h3>
+<section id="slide-org307b222">
+<h3 id="org307b222">Go</h3>
 <ul>
 <li><a href="https://talks.golang.org/2015/simplicity-is-complicated.slide#1">https://talks.golang.org/2015/simplicity-is-complicated.slide#1</a></li>
 <li><a href="https://dave.cheney.net/2015/03/08/simplicity-and-collaboration">https://dave.cheney.net/2015/03/08/simplicity-and-collaboration</a></li>
@@ -1053,8 +1053,8 @@ That Rich Hickey again:
 </section>
 </section>
 <section>
-<section id="slide-org74b3927">
-<h3 id="org74b3927">Non-Go</h3>
+<section id="slide-orgfd39aa5">
+<h3 id="orgfd39aa5">Non-Go</h3>
 <ul>
 <li>Rich Hickey: <a href="https://www.infoq.com/presentations/Simple-Made-Easy">https://www.infoq.com/presentations/Simple-Made-Easy</a></li>
 <li>Ward Cunningham: <a href="http://www.artima.com/intv/simplest2.html">http://www.artima.com/intv/simplest2.html</a></li>
@@ -1067,8 +1067,8 @@ That Rich Hickey again:
 </div>
 </div>
 <p> Created by am. </p>
-<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
-<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="https://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -1100,9 +1100,9 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 });
 </script>
 </body>
